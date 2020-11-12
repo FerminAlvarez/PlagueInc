@@ -1,21 +1,23 @@
--------------------------------------------Infectado--------------------------------------------
-crearInfectado():Infectado{
-    CargaViral = 100;
-    velocidad =
-    rangoAlcance = 
-}
-movimientoInfectado(){
+-------------------------------------------Entidad--------------------------------------------
+Algoritmo movimiento{
     Cada X tiempo{
-        if(posicionYInfectado+Velocidad <LimiteInferior)
-            si (cargaViral>20)
-                posicionYInfectado = +Velocidad;
-            else
-                posicionYInfectado = +Velocidad*2;
-        else
-            posicionY = LoQueConsideremosArriba;
+        miEstrategiaMovimiento.mover()
     }
 }
 ------------------------------------------------------------------------------------------------
+-------------------------------------------EstrategiaMovimiento--------------------------------------------
+Algoritmo mover{
+    miEntidadGrafica.cambiarPosicion(miEntidadGrafica.getPosicionX() + direccionX * velocidad sin salirse del cuadrado, IDEM Y)
+    si(miEntidadGrafica.getPosicionX() + direccionX * velocidad está fuera de la zona de juego){
+        direccionY = - direccionY
+        salirsePorY()
+    }
+}
+-------------------------------------------Beta--------------------------------------------
+Algoritmo Beta: Beta{
+    setMovimiento(movimienoVertical con velocidad 5 por ejemplo)
+    setAtaque(dispararEsporas con daño igual a Dano)
+}
 
 
 -------------------------------------------Mapa-------------------------------------------------
