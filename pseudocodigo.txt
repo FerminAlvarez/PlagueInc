@@ -1,13 +1,11 @@
 -------------------------------------------Entidad--------------------------------------------
 Algoritmo movimiento{
-    Cada X tiempo{
-        miEstrategiaMovimiento.mover()
-    }
+    miEstrategiaMovimiento.mover()
 }
 ------------------------------------------------------------------------------------------------
 -------------------------------------------EstrategiaMovimiento--------------------------------------------
 Algoritmo mover{
-    miEntidadGrafica.cambiarPosicion(miEntidadGrafica.getPosicionX() + direccionX * velocidad sin salirse del cuadrado, IDEM Y)
+    miEntidadGrafica.cambiarPosicion(miEntidadGrafica.getPosicionX() + direccionX * velocidad sin salirse del cuadrado preguntar a Logica, IDEM Y)
     si(miEntidadGrafica.getPosicionX() + direccionX * velocidad está fuera de la zona de juego){
         direccionY = - direccionY
         salirsePorY()
