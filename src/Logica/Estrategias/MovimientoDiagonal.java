@@ -21,4 +21,6 @@ public class MovimientoDiagonal extends EstrategiaMovimiento{
 		
 	}
 
+	
+
 }

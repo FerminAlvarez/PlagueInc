@@ -2,6 +2,7 @@ package Logica.Niveles;
 
 public class Nivel3 extends EstadoNivel{
 
+	private String fondo = "imagenes/Niveles/Fondo3.png";
 	@Override
 	protected void empezar() {
 		// TODO Auto-generated method stub
@@ -10,8 +11,11 @@ public class Nivel3 extends EstadoNivel{
 
 	@Override
 	public String obtenerFondo() {
-		// TODO Auto-generated method stub
-		return null;
+		return fondo;
 	}
 
+	@Override
+	public EstadoNivel siguienteNivel() {
+		return null;
+	}
 }

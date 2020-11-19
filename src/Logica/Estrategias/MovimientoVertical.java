@@ -8,7 +8,6 @@ public class MovimientoVertical extends EstrategiaMovimiento{
 		super(velocidad, direccionX, direccionY, miEntidadGrafica);
 		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	protected void salirsePorX() {
 		// TODO Auto-generated method stub

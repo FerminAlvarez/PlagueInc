@@ -11,6 +11,10 @@ import javax.swing.border.EmptyBorder;
 
 import Logica.logica;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
 import javax.imageio.ImageIO;
 import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
@@ -91,10 +95,8 @@ public class GUI extends JFrame {
 		
 	}
 	
-	
-	
-	
 	public void establecerFondo(String direccionFondo) {
 		Fondo.establecerFondo(direccionFondo);
 	}
+	
 }

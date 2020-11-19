@@ -1,8 +1,8 @@
 package Logica;
 
+import Grafica.GUI;
 import java.util.LinkedList;
 
-import Grafica.GUI;
 import Logica.Entidades.Entidad;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.Fabricas.Fabrica;
@@ -11,7 +11,6 @@ import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
 
 public class logica {
-	
 	private  GUI gui;
 	private static Jugador jugador;
 	private Fabrica fabrica;
