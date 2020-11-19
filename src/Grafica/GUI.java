@@ -30,7 +30,7 @@ public class GUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JPanel labelFondo;
+	private Campo Fondo;
 
 	/**
 	 * Launch the application.
@@ -70,9 +70,9 @@ public class GUI extends JFrame {
 		btnIniciar.setBounds(30, 11, 89, 23);
 		contentPane.add(btnIniciar);
 		
-		labelFondo = new JPanel();
-		labelFondo.setBounds(30, 45, 562, 385);
-		contentPane.add(labelFondo);
+		Fondo = new Campo(logica);
+		Fondo.setBounds(30, 45, 562, 385);
+		contentPane.add(Fondo);
 		
 	    InputMap im = contentPane.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 	    ActionMap am = contentPane.getActionMap();
@@ -91,25 +91,10 @@ public class GUI extends JFrame {
 		
 	}
 	
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		drawObjects(g);
-		Toolkit.getDefaultToolkit().sync();
-	}
+	
 	
 	
 	public void establecerFondo(String direccionFondo) {
-		InputStream in = GUI.class.getClassLoader().getResourceAsStream(direccionFondo);
-		ImageIcon imagen;
-		try {
-			imagen = new ImageIcon(ImageIO.read(in));
-
-			Image newimg = imagen.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(),  java.awt.Image.SCALE_SMOOTH);
-			imagen.setImage(newimg);
-			labelFondo.setIcon(imagen);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Fondo.establecerFondo(direccionFondo);
 	}
 }

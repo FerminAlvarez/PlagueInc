@@ -18,6 +18,11 @@ public abstract class Entidad {
 	public void setGrafica(EntidadGrafica e) {
 		miEntidadGrafica = e;
 	}
+	
+	public EntidadGrafica getGrafica() {
+		return miEntidadGrafica;
+	}
+	
 	public void setMovimiento(EstrategiaMovimiento m) {
 		miEstrategiaMovimiento = m;
 	}

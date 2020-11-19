@@ -13,7 +13,7 @@ public class JugadorGrafica extends EntidadGrafica{
 		// TODO Auto-generated constructor stub
 		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/jugador.png");
 		try {
-			imagen = ImageIO.read(in);
+			imagen = ImageIO.read(in).getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

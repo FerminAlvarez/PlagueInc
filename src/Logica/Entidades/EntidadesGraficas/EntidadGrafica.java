@@ -29,7 +29,7 @@ public abstract class EntidadGrafica {
 	
 	public void cambiarImagen(String s) {
 		ImageIcon ii = new ImageIcon(s);
-        imagen = ii.getImage();
+        imagen = ii.getImage().getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
 	}
 	
 	public Image getImagen() {

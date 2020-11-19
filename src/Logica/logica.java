@@ -16,6 +16,7 @@ public class logica {
 	private static Jugador jugador;
 	private Fabrica fabrica;
 	private LinkedList<Entidad> entidades;
+	private boolean andando = false;
 	
 	public logica (GUI gui) {
 		this.gui = gui;
@@ -28,6 +29,7 @@ public class logica {
 		jugador = (Jugador) fabrica.crear();  //TODO Preguntar si está bien
 		entidades = new LinkedList<Entidad>();
 		entidades.addLast(jugador);
+		andando = true;
 	}
 	
 	public void moverJugador(String cmd) {
@@ -39,5 +41,9 @@ public class logica {
 	
 	public LinkedList<Entidad> getEntidades(){
 		return entidades;
+	}
+	
+	public boolean enCurso() {
+		return andando;
 	}
 }
