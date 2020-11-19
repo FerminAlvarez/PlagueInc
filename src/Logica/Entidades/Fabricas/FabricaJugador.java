@@ -6,7 +6,7 @@ import Logica.Entidades.Jugador;
 public class FabricaJugador implements Fabrica{
 
 	public Entidad crear() {
-		return new Jugador();
+		return new Jugador(0, 0);
 	}
 
 }

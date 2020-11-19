@@ -1,6 +1,25 @@
 package Logica.Entidades;
 
-public abstract class Entidad {
+import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
+import Logica.Entidades.Visitors.Visitor;
+import Logica.Estrategias.EstrategiaMovimiento;
 
+public abstract class Entidad {
+	
+	protected EntidadGrafica miEntidadGrafica;
+	protected EstrategiaMovimiento miEstrategiaMovimiento;
+
+	public void mover() {
+		miEstrategiaMovimiento.mover();
+	}
+	
+	public abstract void aceptar(Visitor v);
+	
+	public void setGrafica(EntidadGrafica e) {
+		miEntidadGrafica = e;
+	}
+	public void setMovimiento(EstrategiaMovimiento m) {
+		miEstrategiaMovimiento = m;
+	}
 	
 }

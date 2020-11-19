@@ -1,17 +1,26 @@
 package Grafica;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 
 import Logica.logica;
 
+import javax.imageio.ImageIO;
+import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.io.InputStream;
 import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame {
@@ -21,7 +30,7 @@ public class GUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JLabel labelFondo;
+	private JPanel labelFondo;
 
 	/**
 	 * Launch the application.
@@ -61,15 +70,46 @@ public class GUI extends JFrame {
 		btnIniciar.setBounds(30, 11, 89, 23);
 		contentPane.add(btnIniciar);
 		
-		labelFondo = new JLabel("New label");
+		labelFondo = new JPanel();
 		labelFondo.setBounds(30, 45, 562, 385);
 		contentPane.add(labelFondo);
 		
+	    InputMap im = contentPane.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+	    ActionMap am = contentPane.getActionMap();
+
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DownArrow");
+
+	    logica juego = new logica(this);
+	    
+	    am.put("RightArrow", new ArrowAction("RightArrow", juego));
+	    am.put("LeftArrow", new ArrowAction("LeftArrow", juego));
+	    am.put("UpArrow", new ArrowAction("UpArrow", juego));
+	    am.put("DownArrow", new ArrowAction("DownArrow", juego));
+		
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		drawObjects(g);
+		Toolkit.getDefaultToolkit().sync();
 	}
 	
 	
 	public void establecerFondo(String direccionFondo) {
-		ImageIcon icon = new ImageIcon(direccionFondo); 
-		labelFondo.setIcon(icon);
+		InputStream in = GUI.class.getClassLoader().getResourceAsStream(direccionFondo);
+		ImageIcon imagen;
+		try {
+			imagen = new ImageIcon(ImageIO.read(in));
+
+			Image newimg = imagen.getImage().getScaledInstance(labelFondo.getWidth(), labelFondo.getHeight(),  java.awt.Image.SCALE_SMOOTH);
+			imagen.setImage(newimg);
+			labelFondo.setIcon(imagen);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
