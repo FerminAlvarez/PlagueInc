@@ -9,7 +9,7 @@ public class Jugador extends Personaje{
 	
 	public Jugador(int hp, int dano) {
 		super(hp, dano);
-		miEntidadGrafica = new JugadorGrafica(20, 20);
+		miEntidadGrafica = new JugadorGrafica(300, 300);
 		miEstrategiaMovimiento = new MovimientoJugador(1, 1, 0, miEntidadGrafica);
 		// TODO Auto-generated constructor stub
 	}

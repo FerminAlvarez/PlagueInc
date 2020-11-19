@@ -26,12 +26,9 @@ public class Campo extends JPanel implements ActionListener{
 
 	private logica juego;
 	private Image fondo;
-	private int width, height;
 	
 	public Campo(logica juego) {
 		this.juego = juego;
-		width = this.getSize().width;
-		height = this.getSize().height;
 	}
 	
 	@Override
@@ -40,16 +37,15 @@ public class Campo extends JPanel implements ActionListener{
 		
 		
 		if (fondo != null) {
-			System.out.println("Fondo no nulo");
 			g.drawImage(fondo, 0, 0, getSize().width, getSize().height, null);
 		}
 		drawObjects(g);
 		Toolkit.getDefaultToolkit().sync();
+		repaint();
 	}
 	
 	private void drawObjects(Graphics g) {
 		if(juego.enCurso()) {
-			System.out.println("Dibujo");
 			LinkedList<Entidad> elementos = juego.getEntidades();
 			for(Entidad entidad : elementos) {
 				EntidadGrafica e = entidad.getGrafica();
@@ -74,7 +70,6 @@ public class Campo extends JPanel implements ActionListener{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		repaint();
 	}
 
 }

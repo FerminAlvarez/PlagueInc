@@ -1,8 +1,6 @@
 package Grafica;
 
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,20 +9,11 @@ import javax.swing.border.EmptyBorder;
 
 import Logica.logica;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import java.awt.event.ActionListener;
-import javax.imageio.ImageIO;
 import javax.swing.ActionMap;
-import javax.swing.ImageIcon;
 import javax.swing.InputMap;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.io.InputStream;
 import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame {
