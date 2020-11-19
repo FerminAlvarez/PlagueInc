@@ -2,7 +2,8 @@ package Logica.Niveles;
 
 public class Nivel1 extends EstadoNivel{
 	
-	private String fondo = "C:\\Users\\Fermin\\Desktop\\Proyecto JUEGO TDP\\pr\\src\\imagenes\\Fondo2.png";
+
+	private String fondo = "/imagenes/Niveles/Fondo1.png";
 	
 	
 	public String obtenerFondo() {
@@ -13,5 +14,10 @@ public class Nivel1 extends EstadoNivel{
 	protected void empezar() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public EstadoNivel siguienteNivel() {
+		return (new Nivel2());
 	}
 }
