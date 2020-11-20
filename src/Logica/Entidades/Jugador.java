@@ -3,34 +3,33 @@ package Logica.Entidades;
 import Logica.Entidades.EntidadesGraficas.JugadorGrafica;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Estrategias.EstrategiaDisparo;
-import Logica.Estrategias.MovimientoJugador;
+import Logica.Estrategias.MovimientoHorizontal;
 
 public class Jugador extends Personaje{
+	
+	private int dirX;
 	
 	public Jugador(int hp, int dano) {
 		super(hp, dano);
 		miEntidadGrafica = new JugadorGrafica(300, 300);
-		miEstrategiaMovimiento = new MovimientoJugador(1, 1, 0, miEntidadGrafica);
+		miEstrategiaMovimiento = new MovimientoHorizontal(1, 1, 0, miEntidadGrafica);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void mover() {
-		
+		//TODO Cuando ande el mover() para todos, borrar el método
 	}
 	
-	public void mover(String cmd) {
-		switch (cmd){
-			case "LeftArrow" : {
-	            System.out.println("Izquierda");
-				miEstrategiaMovimiento.mover();
-				break;
-			}
-			case "RightArrow" : {
-	            System.out.println("Derecha");
-				
-				break;
-			}
+	public void mover(String estado, String cmd) {
+		if(cmd == "RightArrow") {
+			dirX = estado == "Press" ? 1 : 0;
 		}
+		if(cmd == "LeftArrow") {
+			dirX = estado == "Press" ? -1 : 0;
+		}
+		miEstrategiaMovimiento.setDireccionX(dirX);
+		//TODO Cuando ande el mover() para todos, borrar lo siguiente
+		miEstrategiaMovimiento.mover();
 	}
 	
 	@Override

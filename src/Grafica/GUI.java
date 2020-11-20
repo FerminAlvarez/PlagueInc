@@ -70,17 +70,17 @@ public class GUI extends JFrame {
 	    InputMap im = contentPane.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 	    ActionMap am = contentPane.getActionMap();
 
-	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
-	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");
-	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
-	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DownArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "PressRightArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "ReleaseRightArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "PressLeftArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "ReleaseLeftArrow");
 
 	    logica juego = new logica(this);
 	    
-	    am.put("RightArrow", new ArrowAction("RightArrow", juego));
-	    am.put("LeftArrow", new ArrowAction("LeftArrow", juego));
-	    am.put("UpArrow", new ArrowAction("UpArrow", juego));
-	    am.put("DownArrow", new ArrowAction("DownArrow", juego));
+	    am.put("PressRightArrow", new ArrowAction("Press", "RightArrow", juego));
+	    am.put("ReleaseRightArrow", new ArrowAction("Release", "RightArrow", juego));
+	    am.put("PressLeftArrow", new ArrowAction("Press", "LeftArrow", juego));
+	    am.put("ReleaseLeftArrow", new ArrowAction("Release", "LeftArrow", juego));
 		
 	}
 	

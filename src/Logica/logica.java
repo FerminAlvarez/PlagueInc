@@ -31,9 +31,9 @@ public class logica {
 		andando = true;
 	}
 	
-	public void moverJugador(String cmd) {
+	public void moverJugador(String estado, String cmd) {
 		if(jugador != null)
-			jugador.mover(cmd);
+			jugador.mover(estado, cmd);
 		else
 			System.out.println("JUGADOR NULL");
 	}

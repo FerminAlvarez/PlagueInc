@@ -25,6 +25,14 @@ public abstract class EstrategiaMovimiento {
 			salirsePorY();
 	}
 
+	public void setDireccionX(int x) {
+		direccionX = x;
+	}
+	
+	public void setDireccionY(int y) {
+		direccionY = y;
+	}
+	
 	public void setVelocidad(int v) {
 		velocidad = v;
 	}
