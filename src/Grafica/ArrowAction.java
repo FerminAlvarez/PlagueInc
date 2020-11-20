@@ -13,26 +13,27 @@ public class ArrowAction extends AbstractAction{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String cmd;
+	private String cmd, estado;
 	private logica juego;
 
-    public ArrowAction(String cmd, logica juego) {
+    public ArrowAction(String estado, String cmd, logica juego) {
+    	this.estado = estado;
         this.cmd = cmd;
         this.juego = juego;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (cmd.equalsIgnoreCase("LeftArrow")) {
+        if (cmd.equalsIgnoreCase("LeftArrow") && estado.equalsIgnoreCase("Press")) {
             System.out.println("The left arrow was pressed!");
-        } else if (cmd.equalsIgnoreCase("RightArrow")) {
+        } else if (cmd.equalsIgnoreCase("LeftArrow") && estado.equalsIgnoreCase("Release")) {
+            System.out.println("The left arrow was released!");
+        } else if (cmd.equalsIgnoreCase("RightArrow") && estado.equalsIgnoreCase("Press")) {
             System.out.println("The right arrow was pressed!");
-        } else if (cmd.equalsIgnoreCase("UpArrow")) {
-            System.out.println("The up arrow was pressed!");
-        } else if (cmd.equalsIgnoreCase("DownArrow")) {
-            System.out.println("The down arrow was pressed!");
+        } else if (cmd.equalsIgnoreCase("RightArrow") && estado.equalsIgnoreCase("Release")) {
+            System.out.println("The right arrow was released!");
         }
-        juego.moverJugador(cmd);
+        juego.moverJugador(estado, cmd);
     }
     
     

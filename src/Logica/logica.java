@@ -42,8 +42,6 @@ public class logica {
 		crearInfectados(3, 1000);
 		
 		
-	    
-	    
 	}
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
@@ -64,9 +62,10 @@ public class logica {
 	
 	
 	
-	public void moverJugador(String cmd) {
+	
+	public void moverJugador(String estado, String cmd) {
 		if(jugador != null)
-			jugador.mover(cmd);
+			jugador.mover(estado, cmd);
 		else
 			System.out.println("JUGADOR NULL");
 	}
