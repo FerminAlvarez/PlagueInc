@@ -34,4 +34,7 @@ public class ArrowAction extends AbstractAction{
         }
         juego.moverJugador(cmd);
     }
+    
+    
+    
 }

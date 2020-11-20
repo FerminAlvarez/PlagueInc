@@ -9,5 +9,4 @@ public class FabricaPremioPermanente implements Fabrica{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
