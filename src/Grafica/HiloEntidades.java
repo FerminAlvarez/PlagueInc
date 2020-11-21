@@ -2,17 +2,21 @@ package Grafica;
 
 import java.util.LinkedList;
 
-import Logica.Entidades.Infectado;
+import Logica.Entidades.Entidad;
 
-public class HiloInfectados implements Runnable{
-	private LinkedList<Infectado> infectados;
-	private boolean reproducir=true;
+public class HiloEntidades implements Runnable{
+	private LinkedList<Entidad> entidades;
+	private boolean reproducir = true;
 	private long tiempoEspera;
 	
 	
-	public HiloInfectados(LinkedList<Infectado> infectados, long tiempoDesplazamiento) {
-		this.infectados = infectados;
+	public HiloEntidades(LinkedList<Entidad> entidades, long tiempoDesplazamiento) {
+		this.entidades = entidades;
 		tiempoEspera = tiempoDesplazamiento;
+	}
+	
+	public void arrancarHilo() {
+		reproducir = true;
 	}
 	
 	public void detenerHilo() {
@@ -24,9 +28,8 @@ public class HiloInfectados implements Runnable{
 	public void run() {
 		try {
 			while(reproducir) {
-				for(Infectado infectado : infectados) {
-					System.out.println("Muevo infectado");
-					infectado.mover();
+				for(Entidad e : entidades) {
+					e.mover();
 				}
 				Thread.sleep(tiempoEspera);
 			}

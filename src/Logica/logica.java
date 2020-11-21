@@ -1,7 +1,7 @@
 package Logica;
 
 import Grafica.GUI;
-import Grafica.HiloInfectados;
+import Grafica.HiloEntidades;
 
 import java.util.LinkedList;
 
@@ -22,8 +22,7 @@ public class logica {
 	private boolean andando = false;
 	
 	//NO VA ES PARA TESTEAR
-	private LinkedList<Infectado> infectados;
-	private HiloInfectados hiloInfectados;
+	private HiloEntidades hiloEntidades;
 	
 	public logica (GUI gui) {
 		this.gui = gui;
@@ -39,6 +38,9 @@ public class logica {
 		entidades.addLast(jugador);
 		andando = true;
 		
+		hiloEntidades= new HiloEntidades(entidades,230);
+		Thread d = new Thread(this.hiloEntidades);
+	    d.start();
 		crearInfectados(3, 1000);
 		
 		
@@ -46,26 +48,19 @@ public class logica {
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
 		fabrica = new FabricaAlfa();
-		infectados = new LinkedList<Infectado>();
 		int distancia = 100;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
-			infectado.getGrafica().setPosicion(distancia*i, 10);
+			infectado.getGrafica().setPosicion(distancia * i, 10);
 			entidades.add(infectado);
-			infectados.add(infectado);
 		}
 
-		hiloInfectados= new HiloInfectados(infectados,230);
-		Thread d = new Thread(this.hiloInfectados);
-	    d.start();
+		
 	}
 	
-	
-	
-	
-	public void moverJugador(String estado, String cmd) {
+	public void accionJugador(String estado, String cmd) {
 		if(jugador != null)
-			jugador.mover(estado, cmd);
+			jugador.accion(estado, cmd);
 		else
 			System.out.println("JUGADOR NULL");
 	}

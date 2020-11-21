@@ -12,24 +12,20 @@ public class Jugador extends Personaje{
 	public Jugador(int hp, int dano) {
 		super(hp, dano);
 		miEntidadGrafica = new JugadorGrafica(300, 300);
-		miEstrategiaMovimiento = new MovimientoHorizontal(1, 1, 0, miEntidadGrafica);
+		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, miEntidadGrafica);
+		dirX = 0;
 		// TODO Auto-generated constructor stub
 	}
 
-	public void mover() {
-		//TODO Cuando ande el mover() para todos, borrar el método
-	}
 	
-	public void mover(String estado, String cmd) {
+	public void accion(String estado, String cmd) {
 		if(cmd == "RightArrow") {
-			dirX = estado == "Press" ? 1 : 0;
+			dirX = estado == "Press" ? 5 : 0;
 		}
 		if(cmd == "LeftArrow") {
-			dirX = estado == "Press" ? -1 : 0;
+			dirX = estado == "Press" ? -5 : 0;
 		}
 		miEstrategiaMovimiento.setDireccionX(dirX);
-		//TODO Cuando ande el mover() para todos, borrar lo siguiente
-		miEstrategiaMovimiento.mover();
 	}
 	
 	@Override

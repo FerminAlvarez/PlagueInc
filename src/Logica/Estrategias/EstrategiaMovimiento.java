@@ -18,10 +18,9 @@ public abstract class EstrategiaMovimiento {
 		//int nuevoX = miEntidadGrafica.getPosicionX() + direccionX * velocidad;
 		//TODO Agregar checkeo de si se sale del mapa
 		miEntidadGrafica.setPosicion(miEntidadGrafica.getPosicionX() + direccionX * velocidad,miEntidadGrafica.getPosicionY() + direccionY * velocidad);
-		System.out.println(miEntidadGrafica.getPosicionX() + " " + miEntidadGrafica.getPosicionY());
 		if(miEntidadGrafica.getPosicionX() < 0 || miEntidadGrafica.getPosicionX() > 400)
 			salirsePorX();
-		if(miEntidadGrafica.getPosicionY() < 0 || miEntidadGrafica.getPosicionY() > 300)
+		if(miEntidadGrafica.getPosicionY() > 300)
 			salirsePorY();
 	}
 
