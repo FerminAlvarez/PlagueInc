@@ -26,4 +26,9 @@ public abstract class EstrategiaDisparo {
 		dano = d;
 	}
 
+	public void destruir() {
+		miEntidadGrafica = null;
+		miFabrica = null;
+	}
+	
 }

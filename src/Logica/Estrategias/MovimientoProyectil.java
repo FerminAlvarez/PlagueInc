@@ -18,7 +18,7 @@ public class MovimientoProyectil extends EstrategiaMovimiento{
 
 	@Override
 	protected void salirsePorY() {
-		
+		miEntidad.destruir();
 	}
 
 	

@@ -26,8 +26,7 @@ public class Alfa extends Infectado {
 
 	@Override
 	protected void renovarDisparo() {
-		// TODO Auto-generated method stub
-		
+		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
 	}
 
 }

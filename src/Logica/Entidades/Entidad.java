@@ -32,8 +32,8 @@ public abstract class Entidad {
 		miEstrategiaMovimiento = m;
 	}
 	
-	public void setDestruido(boolean b) {
-		destruido = b;
+	public void destruir() {
+		destruido = true;
 	}
 	
 	public boolean getDestruido() {

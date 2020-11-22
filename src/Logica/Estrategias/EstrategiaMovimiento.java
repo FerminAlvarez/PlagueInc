@@ -38,7 +38,7 @@ public abstract class EstrategiaMovimiento {
 	public void setVelocidad(int v) {
 		velocidad = v;
 	}
-
+	
 	protected abstract void salirsePorX();
 
 	protected abstract void salirsePorY();

@@ -39,9 +39,10 @@ public class HiloEntidades implements Runnable{
 			int i;
 			while(reproducir) {
 				i = 0;
-				for(Entidad e : entidades) {
-					e.mover();
-					if(e.getDestruido())
+				Entidad e;
+				for(Entidad it : entidades) {
+					it.mover();
+					if(it.getDestruido())
 						paraBorrar.push(i);
 					i++;
 				}
@@ -49,7 +50,6 @@ public class HiloEntidades implements Runnable{
 					i = paraBorrar.pop();
 					entidades.remove(i);
 				}
-				Entidad e;
 				while(!paraAgregar.isEmpty()) {
 					e = paraAgregar.pop();
 					entidades.add(e);
