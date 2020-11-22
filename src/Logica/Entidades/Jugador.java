@@ -10,14 +10,14 @@ import Logica.Estrategias.MovimientoHorizontal;
 public class Jugador extends Personaje{
 	
 	private int dirX;
-	private final int velocidadDisparo = 5;
+	private final int velocidadDisparo = -5;
 	private final int velocidad = 5;
 	
 	public Jugador(int hp, int dano, Fabrica miFabrica) {
 		super(hp, dano, miFabrica);
 		miEntidadGrafica = new JugadorGrafica(300, 300);
 		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, miEntidadGrafica);
-		miEstrategiaDisparo = new DisparoNormal(dano, -velocidadDisparo, miFabrica, miEntidadGrafica);
+		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
 		dirX = 0;
 	}
 

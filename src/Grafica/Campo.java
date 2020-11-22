@@ -1,13 +1,14 @@
 package Grafica;
 
 import java.awt.Graphics;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.LinkedList;
+import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -46,8 +47,10 @@ public class Campo extends JPanel implements ActionListener{
 	
 	private void drawObjects(Graphics g) {
 		if(juego.enCurso()) {
-			LinkedList<Entidad> elementos = juego.getEntidades();
-			for(Entidad entidad : elementos) {
+			Entidad entidad;
+			Iterator<Entidad> it = juego.getEntidades().iterator();
+			while(it.hasNext()) {
+				entidad = it.next();
 				EntidadGrafica e = entidad.getGrafica();
 				g.drawImage(e.getImagen(), e.getPosicionX(), e.getPosicionY(), this);
 			}
@@ -56,7 +59,7 @@ public class Campo extends JPanel implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		repaint();
+		//repaint();
 	}
 	
 	public void establecerFondo(String direccionFondo) {

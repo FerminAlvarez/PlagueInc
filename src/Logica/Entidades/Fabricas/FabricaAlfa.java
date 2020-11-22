@@ -1,25 +1,25 @@
 package Logica.Entidades.Fabricas;
 
-import java.util.LinkedList;
+import java.util.Stack;
 
 import Logica.Entidades.Alfa;
 import Logica.Entidades.Entidad;
 
 public class FabricaAlfa implements Fabrica{
 
-	private LinkedList<Entidad> lista;
+	private Stack<Entidad> cambios;
 	private Fabrica miFabrica;
 	
-	public FabricaAlfa(LinkedList<Entidad> lista, Fabrica miFabrica) {
-		this.lista = lista;
+	public FabricaAlfa(Stack<Entidad> cambios, Fabrica miFabrica) {
+		this.cambios = cambios;
 		this.miFabrica = miFabrica;
 	}
 	
 	@Override
 	public Entidad crear() {
-		Alfa alfa = new Alfa(3, 3, miFabrica);
-		lista.addLast(alfa);
-		return alfa;
+		Alfa a = new Alfa(30, 10, miFabrica);
+		cambios.push(a);
+		return a;
 	}
 
 }

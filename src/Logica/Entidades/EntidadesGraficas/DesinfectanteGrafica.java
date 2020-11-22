@@ -11,7 +11,7 @@ public class DesinfectanteGrafica extends EntidadGrafica{
 	
 	public DesinfectanteGrafica(int x, int y) {
 		super(x, y);
-		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Espora.png");
+		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Desinfectante.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {

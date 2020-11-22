@@ -1,13 +1,23 @@
 package Logica.Entidades.Fabricas;
 
-import Logica.Entidades.Entidad;
+import java.util.Stack;
 
-public class FabricaEspora implements Fabrica{
+import Logica.Entidades.Entidad;
+import Logica.Entidades.Espora;
+
+public class FabricaEspora implements Fabrica {
+
+	private Stack<Entidad> cambios;
+
+	public FabricaEspora(Stack<Entidad> cambios) {
+		this.cambios = cambios;
+	}
 
 	@Override
 	public Entidad crear() {
-		// TODO Auto-generated method stub
-		return null;
+		Espora e = new Espora(10);
+		cambios.push(e);
+		return e;
 	}
 
 }

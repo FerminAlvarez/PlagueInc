@@ -5,9 +5,6 @@ import Logica.Entidades.Visitors.Visitor;
 import Logica.Estrategias.MovimientoVertical;
 
 public class Desinfectante extends Proyectil{
-
-	
-	
 	
 	public Desinfectante(int dano) {
 		super(dano);

@@ -1,9 +1,12 @@
 package Logica;
 
 import Grafica.GUI;
+
 import Grafica.HiloEntidades;
 
-import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import Logica.Entidades.Entidad;
 import Logica.Entidades.Infectado;
@@ -11,15 +14,17 @@ import Logica.Entidades.Jugador;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Fabricas.FabricaAlfa;
 import Logica.Entidades.Fabricas.FabricaDesinfectante;
+import Logica.Entidades.Fabricas.FabricaEspora;
 import Logica.Entidades.Fabricas.FabricaJugador;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
 
 public class logica {
-	private  GUI gui;
+	private GUI gui;
 	private static Jugador jugador;
 	private Fabrica fabrica;
-	private LinkedList<Entidad> entidades;
+	private List<Entidad> entidades;
+	private Stack<Entidad> paraAgregar;
 	private boolean andando = false;
 	
 	private HiloEntidades hiloEntidades;
@@ -29,16 +34,16 @@ public class logica {
 	}
 	
 	public void iniciar() {
+		paraAgregar = new Stack<Entidad>();
 		EstadoNivel nivel = new Nivel1();
-		entidades = new LinkedList<Entidad>();
+		entidades = new CopyOnWriteArrayList<Entidad>();
 		gui.establecerFondo(nivel.obtenerFondo());
 		
-		fabrica = new FabricaJugador(entidades, new FabricaDesinfectante(entidades));
+		fabrica = new FabricaJugador(paraAgregar, new FabricaDesinfectante(paraAgregar));
 		jugador = (Jugador) fabrica.crear();  //TODO Preguntar si está bien
-		entidades.addLast(jugador);
 		andando = true;
 		
-		hiloEntidades= new HiloEntidades(entidades,16);
+		hiloEntidades= new HiloEntidades(entidades, paraAgregar, 16, gui.getCampo());
 		Thread d = new Thread(this.hiloEntidades);
 	    d.start();
 		crearInfectados(3, 1000);
@@ -47,7 +52,7 @@ public class logica {
 	}
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
-		fabrica = new FabricaAlfa(entidades, null);
+		fabrica = new FabricaAlfa(paraAgregar, new FabricaEspora(paraAgregar));
 		int distancia = 100;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
@@ -65,7 +70,7 @@ public class logica {
 			System.out.println("JUGADOR NULL");
 	}
 	
-	public LinkedList<Entidad> getEntidades(){
+	public List<Entidad> getEntidades(){
 		return entidades;
 	}
 	
