@@ -23,6 +23,10 @@ public abstract class Entidad {
 		return miEntidadGrafica;
 	}
 	
+	public EstrategiaMovimiento getMovimiento() {
+		return miEstrategiaMovimiento;
+	}
+	
 	public void setMovimiento(EstrategiaMovimiento m) {
 		miEstrategiaMovimiento = m;
 	}

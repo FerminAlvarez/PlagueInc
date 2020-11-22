@@ -10,6 +10,7 @@ import Logica.Entidades.Infectado;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Fabricas.FabricaAlfa;
+import Logica.Entidades.Fabricas.FabricaDesinfectante;
 import Logica.Entidades.Fabricas.FabricaJugador;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
@@ -21,7 +22,6 @@ public class logica {
 	private LinkedList<Entidad> entidades;
 	private boolean andando = false;
 	
-	//NO VA ES PARA TESTEAR
 	private HiloEntidades hiloEntidades;
 	
 	public logica (GUI gui) {
@@ -33,12 +33,12 @@ public class logica {
 		entidades = new LinkedList<Entidad>();
 		gui.establecerFondo(nivel.obtenerFondo());
 		
-		fabrica = new FabricaJugador();
+		fabrica = new FabricaJugador(entidades, new FabricaDesinfectante(entidades));
 		jugador = (Jugador) fabrica.crear();  //TODO Preguntar si está bien
 		entidades.addLast(jugador);
 		andando = true;
 		
-		hiloEntidades= new HiloEntidades(entidades,230);
+		hiloEntidades= new HiloEntidades(entidades,16);
 		Thread d = new Thread(this.hiloEntidades);
 	    d.start();
 		crearInfectados(3, 1000);
@@ -47,7 +47,7 @@ public class logica {
 	}
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
-		fabrica = new FabricaAlfa();
+		fabrica = new FabricaAlfa(entidades, null);
 		int distancia = 100;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
