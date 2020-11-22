@@ -34,9 +34,7 @@ public class Campo extends JPanel implements ActionListener{
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		
-		
+		super.paintComponent(g);		
 		if (fondo != null) {
 			g.drawImage(fondo, 0, 0, getSize().width, getSize().height, null);
 		}

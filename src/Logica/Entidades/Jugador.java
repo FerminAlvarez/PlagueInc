@@ -16,7 +16,7 @@ public class Jugador extends Personaje{
 	public Jugador(int hp, int dano, Fabrica miFabrica) {
 		super(hp, dano, miFabrica);
 		miEntidadGrafica = new JugadorGrafica(300, 300);
-		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, miEntidadGrafica);
+		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, this);
 		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
 		dirX = 0;
 	}

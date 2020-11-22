@@ -1,11 +1,11 @@
 package Logica.Estrategias;
 
-import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
+import Logica.Entidades.Entidad;
 
 public class MovimientoDiagonal extends EstrategiaMovimiento{
 	
-	public MovimientoDiagonal(int velocidad, int direccionX, int direccionY, EntidadGrafica miEntidadGrafica) {
-		super(velocidad, direccionX, direccionY, miEntidadGrafica);
+	public MovimientoDiagonal(int velocidad, int direccionX, int direccionY, Entidad miEntidad) {
+		super(velocidad, direccionX, direccionY, miEntidad);
 		// TODO Auto-generated constructor stub
 	}
 	

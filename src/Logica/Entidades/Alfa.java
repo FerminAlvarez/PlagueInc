@@ -14,7 +14,7 @@ public class Alfa extends Infectado {
 	public Alfa(int hp, int dano, Fabrica miFabrica) {
 		super(hp, dano, miFabrica);
 		miEntidadGrafica = new AlfaGrafica(10, 10);
-		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, miEntidadGrafica);
+		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, this);
 		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
 	}
 

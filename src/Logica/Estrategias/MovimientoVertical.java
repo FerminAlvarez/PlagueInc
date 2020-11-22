@@ -1,11 +1,12 @@
 package Logica.Estrategias;
 
+import Logica.Entidades.Entidad;
 import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
 
 public class MovimientoVertical extends EstrategiaMovimiento{
 
-	public MovimientoVertical(int velocidad, int direccionX, int direccionY, EntidadGrafica miEntidadGrafica) {
-		super(velocidad, direccionX, direccionY, miEntidadGrafica);
+	public MovimientoVertical(int velocidad, int direccionX, int direccionY, Entidad miEntidad) {
+		super(velocidad, direccionX, direccionY, miEntidad);
 		// TODO Auto-generated constructor stub
 	}
 	@Override
@@ -16,8 +17,10 @@ public class MovimientoVertical extends EstrategiaMovimiento{
 
 	@Override
 	protected void salirsePorY() {
-		miEntidadGrafica.setPosicion(miEntidadGrafica.getPosicionX(), -60); //TODO que use la parte más alta de la zona de juego
+		miEntidad.getGrafica().setPosicion(miEntidad.getGrafica().getPosicionX(), -60); //TODO que use la parte más alta de la zona de juego
 		
 	}
+	
+	
 
 }

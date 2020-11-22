@@ -1,22 +1,24 @@
 package Logica.Estrategias;
 
+import Logica.Entidades.Entidad;
 import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
 
 public abstract class EstrategiaMovimiento {
 
 	protected int velocidad, direccionX, direccionY;
-	protected EntidadGrafica miEntidadGrafica;
+	protected Entidad miEntidad;
 
-	protected EstrategiaMovimiento(int velocidad, int direccionX, int direccionY, EntidadGrafica miEntidadGrafica) {
+	protected EstrategiaMovimiento(int velocidad, int direccionX, int direccionY, Entidad miEntidad) {
 		this.velocidad = velocidad;
 		this.direccionX = direccionX;
 		this.direccionY = direccionY;
-		this.miEntidadGrafica = miEntidadGrafica;
+		this.miEntidad = miEntidad;
 	}
 
 	public void mover() {
 		// int nuevoX = miEntidadGrafica.getPosicionX() + direccionX * velocidad;
 		// TODO Agregar checkeo de si se sale del mapa
+		EntidadGrafica miEntidadGrafica = miEntidad.getGrafica();
 		miEntidadGrafica.setPosicion(miEntidadGrafica.getPosicionX() + direccionX * velocidad,
 				miEntidadGrafica.getPosicionY() + direccionY * velocidad);
 		if (miEntidadGrafica.getPosicionX() < 0 || miEntidadGrafica.getPosicionX() > 400)

@@ -1,13 +1,23 @@
 package Logica.Entidades.Fabricas;
 
-import Logica.Entidades.Entidad;
+import java.util.LinkedList;
 
-public class FabricaPremioTemporal implements Fabrica{
+import Logica.Entidades.Entidad;
+import Logica.Entidades.PremioTemporal;
+
+public class FabricaPremioTemporal implements Fabrica {
+
+	private LinkedList<Entidad> lista;
+
+	public FabricaPremioTemporal(LinkedList<Entidad> lista) {
+		this.lista = lista;
+	}
 
 	@Override
 	public Entidad crear() {
-		// TODO Auto-generated method stub
-		return null;
+		PremioTemporal d = new PremioTemporal();
+		lista.addLast(d);
+		return d;
 	}
 
 }

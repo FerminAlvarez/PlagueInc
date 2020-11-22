@@ -10,6 +10,7 @@ import Logica.Entidades.Entidad;
 public class HiloEntidades implements Runnable{
 	private List<Entidad> entidades;
 	private Stack<Entidad> paraAgregar;
+	private Stack<Integer> paraBorrar;
 	private JPanel Campo;
 	private boolean reproducir = true;
 	private long tiempoEspera;
@@ -19,6 +20,7 @@ public class HiloEntidades implements Runnable{
 		this.entidades = entidades;
 		this.paraAgregar = paraAgregar;
 		this.Campo = Campo;
+		paraBorrar = new Stack<Integer>();
 		tiempoEspera = tiempoDesplazamiento;
 	}
 	
@@ -34,9 +36,18 @@ public class HiloEntidades implements Runnable{
 	@Override
 	public void run() {
 		try {
+			int i;
 			while(reproducir) {
+				i = 0;
 				for(Entidad e : entidades) {
 					e.mover();
+					if(e.getDestruido())
+						paraBorrar.push(i);
+					i++;
+				}
+				while(!paraBorrar.isEmpty()) {
+					i = paraBorrar.pop();
+					entidades.remove(i);
 				}
 				Entidad e;
 				while(!paraAgregar.isEmpty()) {

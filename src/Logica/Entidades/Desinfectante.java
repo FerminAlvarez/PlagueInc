@@ -9,7 +9,7 @@ public class Desinfectante extends Proyectil{
 	public Desinfectante(int dano) {
 		super(dano);
 		miEntidadGrafica = new DesinfectanteGrafica(0, 0);
-		miEstrategiaMovimiento = new MovimientoVertical(3, 0, 1, miEntidadGrafica);
+		miEstrategiaMovimiento = new MovimientoVertical(3, 0, 1, this);
 		// TODO Auto-generated constructor stub
 	}
 

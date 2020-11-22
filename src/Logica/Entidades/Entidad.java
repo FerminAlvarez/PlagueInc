@@ -8,6 +8,7 @@ public abstract class Entidad {
 	
 	protected EntidadGrafica miEntidadGrafica;
 	protected EstrategiaMovimiento miEstrategiaMovimiento;
+	protected boolean destruido;
 
 	public void mover() {
 		miEstrategiaMovimiento.mover();
@@ -31,4 +32,11 @@ public abstract class Entidad {
 		miEstrategiaMovimiento = m;
 	}
 	
+	public void setDestruido(boolean b) {
+		destruido = b;
+	}
+	
+	public boolean getDestruido() {
+		return destruido;
+	}
 }
