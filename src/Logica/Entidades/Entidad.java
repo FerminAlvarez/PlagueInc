@@ -9,6 +9,7 @@ public abstract class Entidad {
 	protected EntidadGrafica miEntidadGrafica;
 	protected EstrategiaMovimiento miEstrategiaMovimiento;
 	protected boolean destruido;
+	protected Visitor miVisitor;
 
 	public void mover() {
 		miEstrategiaMovimiento.mover();
@@ -38,5 +39,9 @@ public abstract class Entidad {
 	
 	public boolean getDestruido() {
 		return destruido;
+	}
+
+	public void colision(Entidad otro) {
+		otro.aceptar(miVisitor);
 	}
 }

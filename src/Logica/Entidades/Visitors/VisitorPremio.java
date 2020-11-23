@@ -5,11 +5,19 @@ import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
+import Logica.Entidades.Premio;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
+import Logica.Entidades.Proyectil;
 
 public class VisitorPremio implements Visitor{
 
+	private Premio miEntidad;
+	
+	public VisitorPremio(Premio miEntidad) {
+		this.miEntidad = miEntidad;
+	}
+	
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub

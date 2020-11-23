@@ -3,6 +3,7 @@ package Logica.Entidades;
 import Logica.Entidades.EntidadesGraficas.JugadorGrafica;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Visitors.Visitor;
+import Logica.Entidades.Visitors.VisitorJugador;
 import Logica.Estrategias.DisparoNormal;
 import Logica.Estrategias.EstrategiaDisparo;
 import Logica.Estrategias.MovimientoHorizontal;
@@ -18,6 +19,7 @@ public class Jugador extends Personaje{
 		miEntidadGrafica = new JugadorGrafica(300, 300);
 		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, this);
 		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
+		miVisitor = new VisitorJugador(this);
 		dirX = 0;
 	}
 
@@ -42,8 +44,7 @@ public class Jugador extends Personaje{
 	
 	@Override
 	public void aceptar(Visitor v) {
-		// TODO Auto-generated method stub
-		
+		v.visitar(this);
 	}
 
 	@Override

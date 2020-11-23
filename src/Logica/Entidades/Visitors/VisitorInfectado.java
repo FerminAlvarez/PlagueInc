@@ -4,16 +4,17 @@ import Logica.Entidades.Alfa;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
+import Logica.Entidades.Infectado;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 import Logica.Entidades.Proyectil;
 
-public class VisitorJugador implements Visitor{
+public class VisitorInfectado implements Visitor{
 
-	private Jugador miEntidad;
+	private Infectado miEntidad;
 	
-	public VisitorJugador(Jugador miEntidad) {
+	public VisitorInfectado(Infectado miEntidad) {
 		this.miEntidad = miEntidad;
 	}
 	

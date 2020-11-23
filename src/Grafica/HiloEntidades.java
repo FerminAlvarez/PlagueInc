@@ -1,5 +1,6 @@
 package Grafica;
 
+import java.awt.Rectangle;
 import java.util.List;
 import java.util.Stack;
 
@@ -31,22 +32,33 @@ public class HiloEntidades implements Runnable{
 	public void detenerHilo() {
 		reproducir = false;
 	}
-	
-	
+
 	@Override
 	public void run() {
 		try {
 			int i;
-			while(reproducir) {
+			while (reproducir) {
 				i = 0;
 				Entidad e;
-				for(Entidad it : entidades) {
+				Rectangle colisionA, colisionB;
+				for (Entidad it : entidades) {
 					it.mover();
-					if(it.getDestruido())
+
+					colisionA = it.getGrafica().getBounds();
+					for (Entidad otro : entidades) {
+						if (it != otro) {
+							colisionB = otro.getGrafica().getBounds();
+							if (colisionA.intersects(colisionB)) {
+								it.colision(otro);
+							}
+						}
+					}
+
+					if (it.getDestruido())
 						paraBorrar.push(i);
 					i++;
 				}
-				while(!paraBorrar.isEmpty()) {
+				while (!paraBorrar.isEmpty()) {
 					i = paraBorrar.pop();
 					entidades.remove(i);
 				}

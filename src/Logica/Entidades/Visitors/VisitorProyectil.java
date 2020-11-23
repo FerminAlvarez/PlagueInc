@@ -7,9 +7,16 @@ import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
+import Logica.Entidades.Proyectil;
 
 public class VisitorProyectil implements Visitor{
 
+	private Proyectil miEntidad;
+	
+	public VisitorProyectil(Proyectil miEntidad) {
+		this.miEntidad = miEntidad;
+	}
+	
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -25,7 +32,7 @@ public class VisitorProyectil implements Visitor{
 	@Override
 	public void visitar(Alfa e) {
 		// TODO Auto-generated method stub
-		
+		System.out.print("A ");
 	}
 
 	@Override

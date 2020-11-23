@@ -10,6 +10,7 @@ public class AlfaGrafica extends EntidadGrafica{
 	protected int alto = 50, ancho = 50;
 	public AlfaGrafica(int x, int y) {
 		super(x, y);
+		miColision.setBounds(x, y, alto, ancho);
 		// TODO Auto-generated constructor stub
 		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Infectado1.png");
 		try {

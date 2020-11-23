@@ -19,7 +19,7 @@ public class PremioPermanente extends Premio {
 
 	@Override
 	public void aceptar(Visitor v) {
-
+		v.visitar(this);
 	}
 
 	public static int getCantidadBeneficios() {

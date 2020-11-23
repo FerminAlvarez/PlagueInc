@@ -11,6 +11,7 @@ protected int alto = 20, ancho = 20;
 	
 	public EsporaGrafica(int x, int y) {
 		super(x, y);
+		miColision.setBounds(x, y, alto, ancho);
 		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Espora.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);

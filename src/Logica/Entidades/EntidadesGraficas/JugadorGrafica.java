@@ -12,6 +12,7 @@ public class JugadorGrafica extends EntidadGrafica{
 	
 	public JugadorGrafica(int x, int y) {
 		super(x, y);
+		miColision.setBounds(x, y, alto, ancho);
 		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/jugador.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
