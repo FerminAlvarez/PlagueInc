@@ -6,15 +6,13 @@ import Logica.Estrategias.MovimientoVertical;
 
 public class PremioPermanente extends Premio {
 
-	private Jugador jugador;
 	private int indicePremio;
 
-	public PremioPermanente(Jugador jugador, int indicePremio) {
+	public PremioPermanente(int indicePremio) {
 		super();
 		this.indicePremio = indicePremio;
 		miEntidadGrafica = new PremioPermanenteGrafica(0, 0, indicePremio);
 		miEstrategiaMovimiento = new MovimientoVertical(obtenerVelocidad(), 0, 1, this);
-		this.jugador = jugador;
 	}
 
 	@Override
@@ -31,19 +29,19 @@ public class PremioPermanente extends Premio {
 		int velocidad = 0;
 		switch (indicePremio) {
 		case 0: {
-				velocidad = 2;
-				break;
-			}
-			case 1: {
-				velocidad = 5;
-				break;
-			}
+			velocidad = 2;
+			break;
+		}
+		case 1: {
+			velocidad = 5;
+			break;
+		}
 		}
 		return velocidad;
 	}
 
 	@Override
-	public void establecerBeneficio() {
+	public void establecerBeneficio(Jugador jugador) {
 		switch (indicePremio) {
 			case 0: {
 				jugador.setHP(100);
@@ -56,7 +54,7 @@ public class PremioPermanente extends Premio {
 				break;
 			}
 		}
-		destruido = true;
+		destruir();
 	}
 	
 

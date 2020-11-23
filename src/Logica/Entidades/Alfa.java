@@ -10,6 +10,7 @@ import Logica.Estrategias.MovimientoVertical;
 public class Alfa extends Infectado {
 
 	protected final int velocidadDisparo = 3;
+	protected final int maxGracePeriod = 15;
 	
 	public Alfa(int hp, int dano, Fabrica miFabrica) {
 		super(hp, dano, miFabrica);
@@ -26,6 +27,12 @@ public class Alfa extends Infectado {
 	@Override
 	protected void renovarDisparo() {
 		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
+	}
+
+	@Override
+	protected void golpeado() {
+		gracePeriod = maxGracePeriod;
+		System.out.println("ZOMBIE ALFA HP" + hp);
 	}
 
 }

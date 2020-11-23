@@ -13,6 +13,7 @@ public class Jugador extends Personaje{
 	private int dirX;
 	private final int velocidadDisparo = -5;
 	private final int velocidad = 5;
+	private final int maxGracePeriod = 60;
 	
 	public Jugador(int hp, int dano, Fabrica miFabrica) {
 		super(hp, dano, miFabrica);
@@ -58,6 +59,13 @@ public class Jugador extends Personaje{
 	protected void renovarDisparo() {
 		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
 		
+	}
+
+
+	@Override
+	protected void golpeado() {
+		gracePeriod = maxGracePeriod;
+		System.out.println("JUGADOR HP" + hp);
 	}
 
 }

@@ -24,4 +24,10 @@ public class Beta extends Infectado{
 		
 	}
 
+	@Override
+	protected void golpeado() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -5,7 +5,7 @@ import Logica.Estrategias.EstrategiaDisparo;
 
 public abstract class Personaje extends Entidad{
 
-	protected int hp, dano;
+	protected int hp, dano, gracePeriod;
 	protected EstrategiaDisparo miEstrategiaDisparo;
 	protected Fabrica miFabrica;
 	
@@ -13,6 +13,11 @@ public abstract class Personaje extends Entidad{
 		this.hp = hp;
 		this.dano = dano;
 		this.miFabrica = miFabrica;
+	}
+	
+	public void mover() {
+		super.mover();
+		gracePeriod = gracePeriod > 0 ? gracePeriod - 1 : 0;
 	}
 	
 	public void setAtaque(EstrategiaDisparo e) {
@@ -40,5 +45,19 @@ public abstract class Personaje extends Entidad{
 		renovarDisparo();
 	}
 	
+	public void recibirDano(int dano) {
+		if(vulnerable()) {
+			hp -= dano;
+			if(hp <= 0)
+				destruir();
+			golpeado();
+		}
+	}
+	
+	protected boolean vulnerable() {
+		return gracePeriod <= 0;
+	}
+	
+	protected abstract void golpeado();
 	protected abstract void renovarDisparo();
 }

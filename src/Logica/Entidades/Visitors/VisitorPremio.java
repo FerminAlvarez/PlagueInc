@@ -1,6 +1,7 @@
 package Logica.Entidades.Visitors;
 
 import Logica.Entidades.Alfa;
+
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -8,7 +9,6 @@ import Logica.Entidades.Jugador;
 import Logica.Entidades.Premio;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
-import Logica.Entidades.Proyectil;
 
 public class VisitorPremio implements Visitor{
 
@@ -44,7 +44,7 @@ public class VisitorPremio implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		miEntidad.establecerBeneficio();
+		miEntidad.establecerBeneficio(e);
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class Desinfectante extends Proyectil{
 
 	@Override
 	public void impacto(Infectado entidad) {
-		System.out.println("Le di a un infectado");
+		entidad.recibirDano(dano);		
 		destruir();
 	}
 

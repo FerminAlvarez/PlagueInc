@@ -64,7 +64,7 @@ public class logica {
 		
 		//Quitar comentario para testear beneficios permanentes.
 		
-		fabrica = new FabricaPremioPermanente(paraAgregar ,jugador);
+		fabrica = new FabricaPremioPermanente(paraAgregar);
 		PremioPermanente premio = (PremioPermanente) fabrica.crear();
 		premio.getGrafica().setPosicion(250,10);
 		/*

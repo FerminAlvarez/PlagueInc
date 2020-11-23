@@ -44,7 +44,6 @@ public class VisitorProyectil implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		System.out.println("A ");
 		// TODO Auto-generated method stub
 		miEntidad.impacto(e);
 		

@@ -23,6 +23,11 @@ public abstract class Infectado extends Personaje{
 		}
 		else
 			cooldown--;
+		gracePeriod = gracePeriod > 0 ? gracePeriod - 1 : 0;
+	}
+	
+	public void atacar(Jugador entidad) {
+		entidad.recibirDano(dano);
 	}
 	
 	protected void disparar() {

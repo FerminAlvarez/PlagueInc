@@ -27,7 +27,7 @@ public class Espora extends Proyectil{
 	@Override
 	public void impacto(Jugador entidad) {
 		// TODO Auto-generated method stub
-		System.out.println("Le di a un jugador");
+		entidad.recibirDano(dano);
 		destruir();
 	}
 

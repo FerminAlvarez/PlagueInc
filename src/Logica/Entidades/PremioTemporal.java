@@ -4,7 +4,8 @@ import Logica.Entidades.EntidadesGraficas.PremioTemporalGrafica;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Estrategias.MovimientoVertical;
 
-public class PremioTemporal extends Premio{
+public class PremioTemporal extends Premio {
+
 	public PremioTemporal() {
 		super();
 		miEntidadGrafica = new PremioTemporalGrafica(0, 0);
@@ -14,15 +15,13 @@ public class PremioTemporal extends Premio{
 	@Override
 	public void aceptar(Visitor v) {
 		v.visitar(this);
-		
+
 	}
 
 	@Override
-	public void establecerBeneficio() {
+	public void establecerBeneficio(Jugador jugador) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
-	
 }

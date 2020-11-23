@@ -1,6 +1,7 @@
 package Logica.Entidades.Visitors;
 
 import Logica.Entidades.Alfa;
+
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -8,7 +9,6 @@ import Logica.Entidades.Infectado;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
-import Logica.Entidades.Proyectil;
 
 public class VisitorInfectado implements Visitor{
 
@@ -44,8 +44,7 @@ public class VisitorInfectado implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		// TODO Auto-generated method stub
-		
+		miEntidad.atacar(e);
 	}
 
 	@Override
