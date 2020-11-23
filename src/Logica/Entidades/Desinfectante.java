@@ -18,4 +18,16 @@ public class Desinfectante extends Proyectil{
 		v.visitar(this);
 	}
 
+	@Override
+	public void impacto(Infectado entidad) {
+		System.out.println("Le di a un infectado");
+		destruir();
+	}
+
+	@Override
+	public void impacto(Jugador entidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

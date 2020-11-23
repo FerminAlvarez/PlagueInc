@@ -32,18 +32,20 @@ public class VisitorProyectil implements Visitor{
 	@Override
 	public void visitar(Alfa e) {
 		// TODO Auto-generated method stub
-		System.out.print("A ");
+		miEntidad.impacto(e);
 	}
 
 	@Override
 	public void visitar(Beta e) {
 		// TODO Auto-generated method stub
+		miEntidad.impacto(e);
 		
 	}
 
 	@Override
 	public void visitar(Jugador e) {
 		// TODO Auto-generated method stub
+		miEntidad.impacto(e);
 		
 	}
 
