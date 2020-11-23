@@ -55,7 +55,7 @@ public class logica {
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
 		fabrica = new FabricaAlfa(paraAgregar, new FabricaEspora(paraAgregar));
-		int distancia = 100;
+		int distancia = 250;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
 			infectado.getGrafica().setPosicion(distancia * i, 10);
@@ -64,10 +64,10 @@ public class logica {
 		
 		//Quitar comentario para testear beneficios permanentes.
 		
-		
 		fabrica = new FabricaPremioPermanente(paraAgregar ,jugador);
 		PremioPermanente premio = (PremioPermanente) fabrica.crear();
 		premio.getGrafica().setPosicion(250,10);
+		/*
 		premio = (PremioPermanente) fabrica.crear();
 		premio.getGrafica().setPosicion(123,10);
 		premio.establecerBeneficio();
@@ -87,6 +87,7 @@ public class logica {
 		premio.getGrafica().setPosicion(2,10);
 		premio.establecerBeneficio();
 		
+		*/
 		
 		
 	}

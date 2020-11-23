@@ -32,7 +32,6 @@ public class VisitorProyectil implements Visitor{
 	@Override
 	public void visitar(Alfa e) {
 		// TODO Auto-generated method stub
-		System.out.print("A ");
 	}
 
 	@Override
@@ -43,7 +42,7 @@ public class VisitorProyectil implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		// TODO Auto-generated method stub
+		System.out.println("A ");
 		
 	}
 

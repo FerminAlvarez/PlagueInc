@@ -43,7 +43,6 @@ public class HiloEntidades implements Runnable{
 				Rectangle colisionA, colisionB;
 				for (Entidad it : entidades) {
 					it.mover();
-
 					colisionA = it.getGrafica().getBounds();
 					for (Entidad otro : entidades) {
 						if (it != otro) {
@@ -70,7 +69,6 @@ public class HiloEntidades implements Runnable{
 				Thread.sleep(tiempoEspera);
 			}
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		}

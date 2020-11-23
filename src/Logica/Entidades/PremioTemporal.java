@@ -14,12 +14,15 @@ public class PremioTemporal extends Premio{
 	@Override
 	public void aceptar(Visitor v) {
 		v.visitar(this);
-	}
-
-	@Override
-	void establecerBeneficio() {
 		
 	}
 
+	@Override
+	public void establecerBeneficio() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	
 }

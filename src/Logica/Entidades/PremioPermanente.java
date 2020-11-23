@@ -31,13 +31,13 @@ public class PremioPermanente extends Premio {
 		int velocidad = 0;
 		switch (indicePremio) {
 		case 0: {
-			velocidad = 2;
-			break;
-		}
-		case 1: {
-			velocidad = 10;
-			break;
-		}
+				velocidad = 2;
+				break;
+			}
+			case 1: {
+				velocidad = 5;
+				break;
+			}
 		}
 		return velocidad;
 	}
@@ -45,18 +45,19 @@ public class PremioPermanente extends Premio {
 	@Override
 	public void establecerBeneficio() {
 		switch (indicePremio) {
-		case 0: {
-			jugador.setHP(100);
-			System.out.println("Se estableció el beneficio de HP");
-			break;
+			case 0: {
+				jugador.setHP(100);
+				System.out.println("Se estableció el beneficio de HP");
+				break;
+			}
+			case 1: {
+				jugador.getMovimiento().setVelocidad(3);
+				System.out.println("se estableció el beneficio de velocidad");
+				break;
+			}
 		}
-		case 1: {
-			jugador.getMovimiento().setVelocidad(2);
-			System.out.println("se estableció el beneficio de velocidad");
-			break;
-		}
-
-		}
+		destruido = true;
 	}
+	
 
 }

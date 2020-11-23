@@ -1,5 +1,6 @@
 package Logica.Entidades;
 
+import Logica.Entidades.Visitors.Visitor;
 import Logica.Entidades.Visitors.VisitorPremio;
 
 public abstract class Premio extends Entidad{
@@ -8,5 +9,6 @@ public abstract class Premio extends Entidad{
 		miVisitor = new VisitorPremio(this);
 	}
 	
-	abstract void establecerBeneficio();
+	public abstract void establecerBeneficio();
+	public abstract void aceptar(Visitor v);
 }

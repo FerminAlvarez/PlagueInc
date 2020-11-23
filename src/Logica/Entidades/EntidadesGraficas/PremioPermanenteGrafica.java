@@ -13,6 +13,7 @@ public class PremioPermanenteGrafica extends EntidadGrafica {
 
 	public PremioPermanenteGrafica(int x, int y, int indicePremio) {
 		super(x, y);
+		miColision.setBounds(x, y, alto, ancho);
 		InputStream in = JugadorGrafica.class.getClassLoader()
 				.getResourceAsStream("imagenes/Entidades/" + imagenes[indicePremio]);
 		try {

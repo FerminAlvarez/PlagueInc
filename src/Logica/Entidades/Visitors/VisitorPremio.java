@@ -44,8 +44,7 @@ public class VisitorPremio implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		// TODO Auto-generated method stub
-		
+		miEntidad.establecerBeneficio();
 	}
 
 	@Override
