@@ -11,6 +11,9 @@ public abstract class Proyectil extends Entidad{
 		miVisitor = new VisitorProyectil(this);
 	}
 	
+	public abstract void impacto(Infectado entidad);
+	public abstract void impacto(Jugador entidad);
+	
 	public void setDano(int dano) {
 		this.dano = dano;
 	}
