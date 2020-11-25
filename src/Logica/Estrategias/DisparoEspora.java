@@ -14,6 +14,7 @@ public class DisparoEspora extends EstrategiaDisparo{
 	@Override
 	public void disparar() {
 		Espora proy = (Espora) miFabrica.crear();
+		proy.setLogica(juego);
 		proy.getMovimiento().setVelocidad(velocidad);
 		proy.setDano(dano);
 		proy.getGrafica().setPosicion(miEntidadGrafica.getPosicionX(), miEntidadGrafica.getPosicionY());

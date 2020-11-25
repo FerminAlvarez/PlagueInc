@@ -1,5 +1,6 @@
 package Logica.Estrategias;
 
+import Logica.logica;
 import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
 import Logica.Entidades.Fabricas.Fabrica;
 
@@ -8,6 +9,7 @@ public abstract class EstrategiaDisparo {
 	protected int velocidad, dano;
 	protected EntidadGrafica miEntidadGrafica;
 	protected Fabrica miFabrica;
+	protected logica juego;
 
 	protected EstrategiaDisparo(int dano, int velocidad, Fabrica miFabrica, EntidadGrafica miEntidadGrafica) {
 		this.velocidad = velocidad;
@@ -29,6 +31,10 @@ public abstract class EstrategiaDisparo {
 	public void destruir() {
 		miEntidadGrafica = null;
 		miFabrica = null;
+	}
+	
+	public void setLogica(logica juego) {
+		this.juego = juego;
 	}
 	
 }

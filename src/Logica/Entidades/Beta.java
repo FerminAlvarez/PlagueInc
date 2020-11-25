@@ -1,14 +1,13 @@
 package Logica.Entidades;
 
 import Logica.Entidades.EntidadesGraficas.BetaGrafica;
-import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Estrategias.MovimientoVertical;
 
 public class Beta extends Infectado{
 
-	public Beta(int hp, int dano, Fabrica miFabrica) {
-		super(hp, dano, miFabrica);
+	public Beta(int hp, int dano) {
+		super(hp, dano);
 		miEntidadGrafica = new BetaGrafica(10, 10);
 		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, this);
 	}

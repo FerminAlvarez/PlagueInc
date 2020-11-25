@@ -1,7 +1,7 @@
 package Logica.Entidades;
 
 import Logica.Entidades.EntidadesGraficas.JugadorGrafica;
-import Logica.Entidades.Fabricas.Fabrica;
+import Logica.Entidades.Fabricas.FabricaDesinfectante;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Entidades.Visitors.VisitorJugador;
 import Logica.Estrategias.DisparoNormal;
@@ -15,8 +15,9 @@ public class Jugador extends Personaje{
 	private final int velocidad = 5;
 	private final int maxGracePeriod = 60;
 	
-	public Jugador(int hp, int dano, Fabrica miFabrica) {
-		super(hp, dano, miFabrica);
+	public Jugador(int hp, int dano) {
+		super(hp, dano);
+		miFabrica = new FabricaDesinfectante();
 		miEntidadGrafica = new JugadorGrafica(300, 300);
 		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, this);
 		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);

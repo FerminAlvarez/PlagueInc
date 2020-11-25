@@ -1,5 +1,6 @@
 package Logica.Entidades;
 
+import Logica.logica;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Estrategias.EstrategiaDisparo;
 
@@ -9,10 +10,9 @@ public abstract class Personaje extends Entidad{
 	protected EstrategiaDisparo miEstrategiaDisparo;
 	protected Fabrica miFabrica;
 	
-	protected Personaje(int hp, int dano, Fabrica miFabrica) {
+	protected Personaje(int hp, int dano) {
 		this.hp = hp;
 		this.dano = dano;
-		this.miFabrica = miFabrica;
 	}
 	
 	public void mover() {
@@ -56,6 +56,11 @@ public abstract class Personaje extends Entidad{
 	
 	protected boolean vulnerable() {
 		return gracePeriod <= 0;
+	}
+	
+	public void setLogica(logica juego) {
+		super.setLogica(juego);
+		miEstrategiaDisparo.setLogica(juego);
 	}
 	
 	protected abstract void golpeado();

@@ -1,6 +1,6 @@
 package Logica.Entidades;
 
-import Logica.Entidades.Fabricas.Fabrica;
+import Logica.Entidades.Fabricas.FabricaEspora;
 import Logica.Entidades.Visitors.VisitorInfectado;
 
 public abstract class Infectado extends Personaje{
@@ -8,10 +8,11 @@ public abstract class Infectado extends Personaje{
 	protected final int cooldownMaximo = 120;
 	protected int cooldown;
 	
-	protected Infectado(int hp, int dano, Fabrica miFabrica) {
-		super(hp, dano, miFabrica);
+	protected Infectado(int hp, int dano) {
+		super(hp, dano);
 		cooldown = cooldownMaximo;
 		miVisitor = new VisitorInfectado(this);
+		miFabrica = new FabricaEspora();
 		// TODO Auto-generated constructor stub
 	}
 	

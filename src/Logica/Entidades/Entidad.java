@@ -1,5 +1,6 @@
 package Logica.Entidades;
 
+import Logica.logica;
 import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Estrategias.EstrategiaMovimiento;
@@ -10,7 +11,8 @@ public abstract class Entidad {
 	protected EstrategiaMovimiento miEstrategiaMovimiento;
 	protected boolean destruido;
 	protected Visitor miVisitor;
-
+	protected logica juego;
+	
 	public void mover() {
 		miEstrategiaMovimiento.mover();
 	}
@@ -41,6 +43,11 @@ public abstract class Entidad {
 		return destruido;
 	}
 
+	public void setLogica(logica juego) {
+		this.juego = juego;
+		juego.agregar(this);
+	}
+	
 	public void colision(Entidad otro) {
 		otro.aceptar(miVisitor);
 	}

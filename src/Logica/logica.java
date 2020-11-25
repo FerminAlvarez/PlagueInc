@@ -2,8 +2,7 @@ package Logica;
 
 import Grafica.GUI;
 
-import Grafica.HiloEntidades;
-
+import java.awt.Rectangle;
 import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -14,19 +13,17 @@ import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Fabricas.FabricaAlfa;
-import Logica.Entidades.Fabricas.FabricaDesinfectante;
-import Logica.Entidades.Fabricas.FabricaEspora;
-import Logica.Entidades.Fabricas.FabricaJugador;
 import Logica.Entidades.Fabricas.FabricaPremioPermanente;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
 
 public class logica {
 	private GUI gui;
-	private static Jugador jugador;
+	private Jugador jugador;
 	private Fabrica fabrica;
 	private List<Entidad> entidades;
 	private Stack<Entidad> paraAgregar;
+	private Stack<Integer> paraBorrar;
 	private boolean andando = false;
 	
 	private HiloEntidades hiloEntidades;
@@ -37,15 +34,16 @@ public class logica {
 	
 	public void iniciar() {
 		paraAgregar = new Stack<Entidad>();
+		paraBorrar = new Stack<Integer>();
 		EstadoNivel nivel = new Nivel1();
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		gui.establecerFondo(nivel.obtenerFondo());
 		
-		fabrica = new FabricaJugador(paraAgregar, new FabricaDesinfectante(paraAgregar));
-		jugador = (Jugador) fabrica.crear();  //TODO Preguntar si está bien
+		jugador = new Jugador(100, 10);
+		jugador.setLogica(this);
 		andando = true;
 		
-		hiloEntidades= new HiloEntidades(entidades, paraAgregar, 16, gui.getCampo());
+		hiloEntidades= new HiloEntidades(this, 16);
 		Thread d = new Thread(this.hiloEntidades);
 	    d.start();
 		crearInfectados(3, 1000);
@@ -54,10 +52,11 @@ public class logica {
 	}
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
-		fabrica = new FabricaAlfa(paraAgregar, new FabricaEspora(paraAgregar));
+		fabrica = new FabricaAlfa(this);
 		int distancia = 250;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
+			infectado.setLogica(this);
 			infectado.getGrafica().setPosicion(distancia * i, 10);
 		}
 		
@@ -92,6 +91,54 @@ public class logica {
 		
 	}
 	
+	public void moverEntidades() {
+		for (Entidad it : entidades) {
+			it.mover();
+		}
+	}
+
+	public void checkearColisiones() {
+		Rectangle colisionA, colisionB;
+		for (Entidad it : entidades) {
+			colisionA = it.getGrafica().getBounds();
+			for (Entidad otro : entidades) {
+				if (it != otro) {
+					colisionB = otro.getGrafica().getBounds();
+					if (colisionA.intersects(colisionB))
+						it.colision(otro);
+				}
+			}
+		}
+	}
+	
+	public void checkearDestruidos() {
+		int i = 0;
+		for (Entidad it : entidades) {
+			if (it.getDestruido())
+				paraBorrar.push(i);
+			i++;
+		}
+		while (!paraBorrar.isEmpty()) {
+			i = paraBorrar.pop();
+			entidades.remove(i);
+		}
+	}
+	
+	public void agregarNuevos() {
+		Entidad e;
+		while(!paraAgregar.isEmpty()) {
+			e = paraAgregar.pop();
+			entidades.add(e);
+		}
+	}
+	
+	public void actualizarGrafica() {
+		gui.actualizarGrafica();
+	}
+	
+	public void agregar(Entidad e){
+		paraAgregar.push(e);
+	}
 	
 	public void accionJugador(String estado, String cmd) {
 		if(jugador != null)

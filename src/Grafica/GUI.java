@@ -46,7 +46,7 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 
-		logica logica = new logica(this);
+		logica juego = new logica(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 640, 480);
 		contentPane = new JPanel();
@@ -57,13 +57,13 @@ public class GUI extends JFrame {
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				logica.iniciar();
+				juego.iniciar();
 			}
 		});
 		btnIniciar.setBounds(30, 11, 89, 23);
 		contentPane.add(btnIniciar);
 
-		Fondo = new Campo(logica);
+		Fondo = new Campo(juego);
 		Fondo.setBounds(30, 45, 562, 385);
 		contentPane.add(Fondo);
 
@@ -75,8 +75,6 @@ public class GUI extends JFrame {
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "PressLeftArrow");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "ReleaseLeftArrow");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, 0, false), "PressFire");
-
-		logica juego = new logica(this);
 
 		am.put("PressRightArrow", new Action("Press", "RightArrow", juego));
 		am.put("ReleaseRightArrow", new Action("Release", "RightArrow", juego));
@@ -92,6 +90,10 @@ public class GUI extends JFrame {
 
 	public JPanel getCampo() {
 		return Fondo;
+	}
+	
+	public void actualizarGrafica() {
+		Fondo.repaint();
 	}
 
 }
