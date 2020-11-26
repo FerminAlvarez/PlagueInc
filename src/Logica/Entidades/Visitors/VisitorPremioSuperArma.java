@@ -1,20 +1,19 @@
 package Logica.Entidades.Visitors;
 
 import Logica.Entidades.Alfa;
-
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
-import Logica.Entidades.Premio;
 import Logica.Entidades.PremioPermanente;
+import Logica.Entidades.PremioSuperArma;
 import Logica.Entidades.PremioTemporal;
 
-public class VisitorPremio implements Visitor{
+public class VisitorPremioSuperArma implements Visitor{
 
-	private Premio miEntidad;
+	private PremioSuperArma miEntidad;
 	
-	public VisitorPremio(Premio miEntidad) {
+	public VisitorPremioSuperArma(PremioSuperArma miEntidad) {
 		this.miEntidad = miEntidad;
 	}
 	
@@ -44,7 +43,8 @@ public class VisitorPremio implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		miEntidad.establecerBeneficio(e);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

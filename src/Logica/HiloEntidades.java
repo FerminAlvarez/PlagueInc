@@ -24,11 +24,7 @@ public class HiloEntidades implements Runnable{
 		try {
 			while (reproducir) {
 				
-				juego.moverEntidades();
-				juego.checkearColisiones();
-				juego.checkearDestruidos();
-				juego.agregarNuevos();
-				juego.actualizarGrafica();
+				juego.pasarFrame();
 				
 				Thread.sleep(tiempoEspera);
 			}

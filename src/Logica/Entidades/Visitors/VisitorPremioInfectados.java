@@ -1,23 +1,15 @@
 package Logica.Entidades.Visitors;
 
 import Logica.Entidades.Alfa;
-
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
-import Logica.Entidades.Infectado;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 
-public class VisitorInfectado implements Visitor{
+public class VisitorPremioInfectados implements Visitor{
 
-	private Infectado miEntidad;
-	
-	public VisitorInfectado(Infectado miEntidad) {
-		this.miEntidad = miEntidad;
-	}
-	
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -32,7 +24,7 @@ public class VisitorInfectado implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		// TODO Auto-generated method stub
+		//premio.establecerBeneficio(e);
 		
 	}
 
@@ -44,7 +36,8 @@ public class VisitorInfectado implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		e.recibirDano(miEntidad.getDano());
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

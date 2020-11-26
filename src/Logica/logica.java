@@ -35,7 +35,7 @@ public class logica {
 	public void iniciar() {
 		paraAgregar = new Stack<Entidad>();
 		paraBorrar = new Stack<Integer>();
-		EstadoNivel nivel = new Nivel1();
+		EstadoNivel nivel = new Nivel1(this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		gui.establecerFondo(nivel.obtenerFondo());
 		
@@ -91,13 +91,21 @@ public class logica {
 		
 	}
 	
-	public void moverEntidades() {
+	public void pasarFrame() {
+		moverEntidades();
+		checkearColisiones();
+		checkearDestruidos();
+		agregarNuevos();
+		actualizarGrafica();
+	}
+	
+	private void moverEntidades() {
 		for (Entidad it : entidades) {
 			it.mover();
 		}
 	}
 
-	public void checkearColisiones() {
+	private void checkearColisiones() {
 		Rectangle colisionA, colisionB;
 		for (Entidad it : entidades) {
 			colisionA = it.getGrafica().getBounds();
@@ -111,7 +119,7 @@ public class logica {
 		}
 	}
 	
-	public void checkearDestruidos() {
+	private void checkearDestruidos() {
 		int i = 0;
 		for (Entidad it : entidades) {
 			if (it.getDestruido())
@@ -124,7 +132,7 @@ public class logica {
 		}
 	}
 	
-	public void agregarNuevos() {
+	private void agregarNuevos() {
 		Entidad e;
 		while(!paraAgregar.isEmpty()) {
 			e = paraAgregar.pop();
@@ -132,7 +140,7 @@ public class logica {
 		}
 	}
 	
-	public void actualizarGrafica() {
+	private void actualizarGrafica() {
 		gui.actualizarGrafica();
 	}
 	
