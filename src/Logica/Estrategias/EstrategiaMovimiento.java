@@ -39,6 +39,9 @@ public abstract class EstrategiaMovimiento {
 		velocidad = v;
 	}
 	
+	public int getVelocidad() {
+		return velocidad;
+	}
 	protected abstract void salirsePorX();
 
 	protected abstract void salirsePorY();

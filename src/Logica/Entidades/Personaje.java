@@ -63,6 +63,10 @@ public abstract class Personaje extends Entidad{
 		miEstrategiaDisparo.setLogica(juego);
 	}
 	
+	public logica getLogica() {
+		return juego;
+	}
+	
 	protected abstract void golpeado();
 	protected abstract void renovarDisparo();
 }

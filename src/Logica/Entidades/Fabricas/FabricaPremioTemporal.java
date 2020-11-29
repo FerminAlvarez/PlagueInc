@@ -19,7 +19,7 @@ public class FabricaPremioTemporal implements Fabrica {
 	@Override
 	public Entidad crear() {
 		Random aleatorio = new Random();
-		int numeroAleatorio = aleatorio.nextInt(2);
+		int numeroAleatorio = aleatorio.nextInt(1);
 		PremioTemporal premio = null;
 		switch (numeroAleatorio) {
 			case 0: {

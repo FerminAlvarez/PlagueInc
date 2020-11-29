@@ -5,11 +5,16 @@ import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
+import Logica.Entidades.PremioCuarentena;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 
-public class VisitorPremioInfectados implements Visitor{
+public class VisitorPremio implements Visitor{
 
+	PremioCuarentena premio;
+	public VisitorPremio(PremioCuarentena miEntidad) {
+		premio = miEntidad;
+	}
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -24,37 +29,17 @@ public class VisitorPremioInfectados implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		int velocidadAnterior = e.getMovimiento().getVelocidad();
-		try {
-			e.getMovimiento().setVelocidad(0);
-			System.out.println("AAAA");
-			Thread.sleep(1000);
-			e.getMovimiento().setVelocidad(velocidadAnterior);
-			
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 	}
 
 	@Override
 	public void visitar(Beta e) {
-		int velocidadAnterior = e.getMovimiento().getVelocidad();
-		try {
-			e.getMovimiento().setVelocidad(0);
-			System.out.println("BBB");
-			Thread.sleep(1000);
-			e.getMovimiento().setVelocidad(velocidadAnterior);
-			
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 	}
 
 	@Override
 	public void visitar(Jugador e) {
-		System.out.println("ADSFASDFASASDFASDFASFSDAF");
+		premio.establecerBeneficio(e);
 	}
 
 	@Override

@@ -51,4 +51,9 @@ public abstract class Entidad {
 	public void colision(Entidad otro) {
 		otro.aceptar(miVisitor);
 	}
+	
+	public Visitor getVisitor() {
+		return miVisitor;
+	}
+	
 }

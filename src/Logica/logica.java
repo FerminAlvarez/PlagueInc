@@ -11,9 +11,11 @@ import Logica.Entidades.Entidad;
 import Logica.Entidades.Infectado;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
+import Logica.Entidades.PremioTemporal;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Fabricas.FabricaAlfa;
 import Logica.Entidades.Fabricas.FabricaPremioPermanente;
+import Logica.Entidades.Fabricas.FabricaPremioTemporal;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
 
@@ -66,6 +68,13 @@ public class logica {
 		fabrica = new FabricaPremioPermanente(paraAgregar);
 		PremioPermanente premio = (PremioPermanente) fabrica.crear();
 		premio.getGrafica().setPosicion(250,10);
+		
+		
+		fabrica = new FabricaPremioTemporal(paraAgregar);
+		PremioTemporal premio1 = (PremioTemporal) fabrica.crear();
+		premio1.getGrafica().setPosicion(100,10);
+		
+		
 		/*
 		premio = (PremioPermanente) fabrica.crear();
 		premio.getGrafica().setPosicion(123,10);

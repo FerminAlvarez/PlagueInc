@@ -1,22 +1,18 @@
 package Logica.Entidades.Visitors;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Logica.Entidades.Alfa;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
-import Logica.Entidades.PremioCuarentena;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioCuarentena implements Visitor{
-
-	private PremioCuarentena miEntidad;
-	
-	public VisitorPremioCuarentena(PremioCuarentena miEntidad) {
-		this.miEntidad = miEntidad;
-	}
-
+	private long delay = 5000;
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -31,23 +27,38 @@ public class VisitorPremioCuarentena implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		// TODO Auto-generated method stub
-		
+		//Debería obtener la velocidad anterior
+		e.getMovimiento().setVelocidad(0);
+		System.out.println("Alfa"); 
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				e.getMovimiento().setVelocidad(1);
+			}
+			
+		};
+		timer.schedule(task, delay,delay);
 	}
 
 	@Override
 	public void visitar(Beta e) {
-		// TODO Auto-generated method stub
+		e.getMovimiento().setVelocidad(0);
+		System.out.println("Beta"); 
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				e.getMovimiento().setVelocidad(1);
+			}
+			
+		};
+		timer.schedule(task, delay,delay);
 		
 	}
 
 	@Override
 	public void visitar(Jugador e) {
-		/*
-		Visitor vis = new VisitorRealentizar();
-		for(Entidad it : juego.getEntidades()) {
-			it.aceptar(vis);
-		}*/
 	}
 
 	@Override

@@ -18,4 +18,10 @@ public class PremioSuperArma extends PremioTemporal{
 		v.visitar(this);
 	}
 
+	@Override
+	public void establecerBeneficio(Jugador jugador) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
