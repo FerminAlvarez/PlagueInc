@@ -12,7 +12,7 @@ public class BetaGrafica extends EntidadGrafica{
 		super(x, y);
 		miColision.setBounds(x, y, alto, ancho);
 		// TODO Auto-generated constructor stub
-		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Infectado1.png");
+		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Infectado2.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
