@@ -31,4 +31,8 @@ public abstract class Infectado extends Personaje{
 		miEstrategiaDisparo.disparar();
 	}
 	
+	public void destruir() {
+		super.destruir();
+		juego.infectadoDestruido();
+	}
 }

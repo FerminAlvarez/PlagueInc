@@ -12,7 +12,7 @@ public class FabricaBeta implements Fabrica{
 	
 	@Override
 	public Entidad crear() {
-		Beta beta = new Beta(3, 3);
+		Beta beta = new Beta(50, 30);
 		return beta;
 	}
 }

@@ -27,33 +27,33 @@ public class VisitorPremioCuarentena implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		//Debería obtener la velocidad anterior
+		// Debería obtener la velocidad anterior
 		e.getMovimiento().setVelocidad(0);
-		System.out.println("Alfa"); 
+		System.out.println("Alfa");
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				e.getMovimiento().setVelocidad(1);
 			}
-			
+
 		};
-		timer.schedule(task, delay,delay);
+		timer.schedule(task, delay, delay);
 	}
 
 	@Override
 	public void visitar(Beta e) {
 		e.getMovimiento().setVelocidad(0);
-		System.out.println("Beta"); 
+		System.out.println("Beta");
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				e.getMovimiento().setVelocidad(1);
 			}
-			
+
 		};
-		timer.schedule(task, delay,delay);
+		timer.schedule(task, delay, delay);
 		
 	}
 

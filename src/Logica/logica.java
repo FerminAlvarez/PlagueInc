@@ -2,6 +2,7 @@ package Logica;
 
 import Grafica.GUI;
 
+import java.util.Random;
 import java.awt.Rectangle;
 import java.util.List;
 import java.util.Stack;
@@ -27,6 +28,8 @@ public class logica {
 	private Stack<Entidad> paraAgregar;
 	private Stack<Integer> paraBorrar;
 	private boolean andando = false;
+	private EstadoNivel nivelActual;
+	private int infectadoDelay, infectadosDestruidos;
 	
 	private HiloEntidades hiloEntidades;
 	
@@ -37,9 +40,9 @@ public class logica {
 	public void iniciar() {
 		paraAgregar = new Stack<Entidad>();
 		paraBorrar = new Stack<Integer>();
-		EstadoNivel nivel = new Nivel1(this);
+		empezarNivel(new Nivel1(this));
+		
 		entidades = new CopyOnWriteArrayList<Entidad>();
-		gui.establecerFondo(nivel.obtenerFondo());
 		
 		jugador = new Jugador(100, 10);
 		jugador.setLogica(this);
@@ -48,7 +51,7 @@ public class logica {
 		hiloEntidades= new HiloEntidades(this, 16);
 		Thread d = new Thread(this.hiloEntidades);
 	    d.start();
-		crearInfectados(3, 1000);
+		//crearInfectados(3, 1000);
 		
 		
 	}
@@ -104,8 +107,10 @@ public class logica {
 		moverEntidades();
 		checkearColisiones();
 		checkearDestruidos();
+		agregarInfectado();
 		agregarNuevos();
 		actualizarGrafica();
+		pasarNivel();
 	}
 	
 	private void moverEntidades() {
@@ -141,6 +146,23 @@ public class logica {
 		}
 	}
 	
+	private void agregarInfectado() {
+		Fabrica f;
+		Entidad e;
+		Random r = new Random();
+		if(nivelActual.getInfectadosRestantes() > 0) {
+			if(infectadoDelay <= 0) {
+				f = nivelActual.getFabricaInfectado();
+				e = f.crear();
+				e.setLogica(this);
+				e.getGrafica().setPosicion(r.nextInt(240) + 10, -50);
+				infectadoDelay = nivelActual.getDelay();
+			}
+			else
+				infectadoDelay--;
+		}
+	}
+	
 	private void agregarNuevos() {
 		Entidad e;
 		while(!paraAgregar.isEmpty()) {
@@ -151,6 +173,12 @@ public class logica {
 	
 	private void actualizarGrafica() {
 		gui.actualizarGrafica();
+	}
+	
+	private void pasarNivel() {
+		if(infectadosDestruidos >= nivelActual.getTotalInfectados()) {
+			empezarNivel(nivelActual.siguienteNivel());
+		}
 	}
 	
 	public void agregar(Entidad e){
@@ -170,5 +198,15 @@ public class logica {
 	
 	public boolean enCurso() {
 		return andando;
+	}
+	
+	public void infectadoDestruido() {
+		infectadosDestruidos++;
+	}
+	
+	private void empezarNivel(EstadoNivel n) {
+		infectadosDestruidos = 0;
+		nivelActual = n;
+		gui.establecerFondo(n.getFondo());
 	}
 }
