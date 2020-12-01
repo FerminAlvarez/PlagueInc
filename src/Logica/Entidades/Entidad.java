@@ -19,19 +19,19 @@ public abstract class Entidad {
 	
 	public abstract void aceptar(Visitor v);
 	
-	public void setGrafica(EntidadGrafica e) {
+	public void establecerGrafica(EntidadGrafica e) {
 		miEntidadGrafica = e;
 	}
 	
-	public EntidadGrafica getGrafica() {
+	public EntidadGrafica obtenerGrafica() {
 		return miEntidadGrafica;
 	}
 	
-	public EstrategiaMovimiento getMovimiento() {
+	public EstrategiaMovimiento obtenerMovimiento() {
 		return miEstrategiaMovimiento;
 	}
 	
-	public void setMovimiento(EstrategiaMovimiento m) {
+	public void establecerMovimiento(EstrategiaMovimiento m) {
 		miEstrategiaMovimiento = m;
 	}
 	
@@ -39,11 +39,11 @@ public abstract class Entidad {
 		destruido = true;
 	}
 	
-	public boolean getDestruido() {
+	public boolean obtenerDestruido() {
 		return destruido;
 	}
 
-	public void setLogica(logica juego) {
+	public void establecerLogica(logica juego) {
 		this.juego = juego;
 		juego.agregar(this);
 	}
@@ -52,7 +52,7 @@ public abstract class Entidad {
 		otro.aceptar(miVisitor);
 	}
 	
-	public Visitor getVisitor() {
+	public Visitor obtenerVisitor() {
 		return miVisitor;
 	}
 	

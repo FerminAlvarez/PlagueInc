@@ -45,7 +45,7 @@ public class logica {
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		
 		jugador = new Jugador(100, 10);
-		jugador.setLogica(this);
+		jugador.establecerLogica(this);
 		andando = true;
 		
 		hiloEntidades= new HiloEntidades(this, 16);
@@ -63,8 +63,8 @@ public class logica {
 		int distancia = 250;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
-			infectado.setLogica(this);
-			infectado.getGrafica().setPosicion(distancia * i, 10);
+			infectado.establecerLogica(this);
+			infectado.obtenerGrafica().establecerPosicion(distancia * i, 10);
 		}
 		
 		
@@ -72,35 +72,35 @@ public class logica {
 		
 		fabrica = new FabricaPremioPermanente();
 		PremioPermanente premio = (PremioPermanente) fabrica.crear();
-		premio.setLogica(this);
-		premio.getGrafica().setPosicion(250,10);
+		premio.establecerLogica(this);
+		premio.obtenerGrafica().establecerPosicion(250,10);
 		
 		
 		fabrica = new FabricaPremioTemporal();
 		
 		PremioTemporal premio1 = (PremioTemporal) fabrica.crear();
-		premio1.setLogica(this);
-		premio1.getGrafica().setPosicion(100,10);
+		premio1.establecerLogica(this);
+		premio1.obtenerGrafica().establecerPosicion(100,10);
 		
 		
 		/*
 		premio = (PremioPermanente) fabrica.crear();
-		premio.getGrafica().setPosicion(123,10);
+		premio.obtenerGrafica().establecerPosicion(123,10);
 		premio.establecerBeneficio();
 		premio = (PremioPermanente) fabrica.crear();
-		premio.getGrafica().setPosicion(234,10);
+		premio.obtenerGrafica().establecerPosicion(234,10);
 		premio.establecerBeneficio();
 		premio = (PremioPermanente) fabrica.crear();
-		premio.getGrafica().setPosicion(123,10);
+		premio.obtenerGrafica().establecerPosicion(123,10);
 		premio.establecerBeneficio();
 		premio = (PremioPermanente) fabrica.crear();
-		premio.getGrafica().setPosicion(444,10);
+		premio.obtenerGrafica().establecerPosicion(444,10);
 		premio.establecerBeneficio();
 		premio = (PremioPermanente) fabrica.crear();
-		premio.getGrafica().setPosicion(55,10);
+		premio.obtenerGrafica().establecerPosicion(55,10);
 		premio.establecerBeneficio();
 		premio = (PremioPermanente) fabrica.crear();
-		premio.getGrafica().setPosicion(2,10);
+		premio.obtenerGrafica().establecerPosicion(2,10);
 		premio.establecerBeneficio();
 		
 		*/
@@ -127,10 +127,10 @@ public class logica {
 	private void checkearColisiones() {
 		Rectangle colisionA, colisionB;
 		for (Entidad it : entidades) {
-			colisionA = it.getGrafica().getBounds();
+			colisionA = it.obtenerGrafica().obtenerBounds();
 			for (Entidad otro : entidades) {
 				if (it != otro) {
-					colisionB = otro.getGrafica().getBounds();
+					colisionB = otro.obtenerGrafica().obtenerBounds();
 					if (colisionA.intersects(colisionB))
 						it.colision(otro);
 				}
@@ -141,7 +141,7 @@ public class logica {
 	private void checkearDestruidos() {
 		int i = 0;
 		for (Entidad it : entidades) {
-			if (it.getDestruido())
+			if (it.obtenerDestruido())
 				paraBorrar.push(i);
 			i++;
 		}
@@ -155,13 +155,13 @@ public class logica {
 		Fabrica f;
 		Entidad e;
 		Random r = new Random();
-		if(nivelActual.getInfectadosRestantes() > 0) {
+		if(nivelActual.obtenerInfectadosRestantes() > 0) {
 			if(infectadoDelay <= 0) {
-				f = nivelActual.getFabricaInfectado();
+				f = nivelActual.obtenerFabricaInfectado();
 				e = f.crear();
-				e.setLogica(this);
-				e.getGrafica().setPosicion(r.nextInt(750) + 10, -50);
-				infectadoDelay = nivelActual.getDelay();
+				e.establecerLogica(this);
+				e.obtenerGrafica().establecerPosicion(r.nextInt(750) + 10, -50);
+				infectadoDelay = nivelActual.obtenerDelay();
 			}
 			else
 				infectadoDelay--;
@@ -181,7 +181,7 @@ public class logica {
 	}
 	
 	private void pasarNivel() {
-		if(infectadosDestruidos >= nivelActual.getTotalInfectados()) {
+		if(infectadosDestruidos >= nivelActual.obtenerTotalInfectados()) {
 			empezarNivel(nivelActual.siguienteNivel());
 		}
 	}
@@ -197,7 +197,7 @@ public class logica {
 			System.out.println("JUGADOR NULL");
 	}
 	
-	public List<Entidad> getEntidades(){
+	public List<Entidad> obtenerEntidades(){
 		return entidades;
 	}
 	
@@ -212,6 +212,6 @@ public class logica {
 	private void empezarNivel(EstadoNivel n) {
 		infectadosDestruidos = 0;
 		nivelActual = n;
-		gui.establecerFondo(n.getFondo());
+		gui.establecerFondo(n.obtenerFondo());
 	}
 }

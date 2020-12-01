@@ -13,10 +13,10 @@ public class DisparoNormal extends EstrategiaDisparo{
 	
 	public void disparar() {
 		Desinfectante proy = (Desinfectante) miFabrica.crear();
-		proy.setLogica(juego);
-		proy.getMovimiento().setVelocidad(velocidad);
-		proy.setDano(dano);
-		proy.getGrafica().setPosicion(miEntidadGrafica.getPosicionX(), miEntidadGrafica.getPosicionY());
+		proy.establecerLogica(juego);
+		proy.obtenerMovimiento().establecerVelocidad(velocidad);
+		proy.establecerDano(dano);
+		proy.obtenerGrafica().establecerPosicion(miEntidadGrafica.obtenerPosicionX(), miEntidadGrafica.obtenerPosicionY());
 	}
 
 }

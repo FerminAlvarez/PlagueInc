@@ -16,30 +16,30 @@ public abstract class EstrategiaMovimiento {
 	}
 
 	public void mover() {
-		// int nuevoX = miEntidadGrafica.getPosicionX() + direccionX * velocidad;
+		// int nuevoX = miEntidadGrafica.obtenerPosicionX() + direccionX * velocidad;
 		// TODO Agregar checkeo de si se sale del mapa
-		EntidadGrafica miEntidadGrafica = miEntidad.getGrafica();
-		miEntidadGrafica.setPosicion(miEntidadGrafica.getPosicionX() + direccionX * velocidad,
-				miEntidadGrafica.getPosicionY() + direccionY * velocidad);
-		if (miEntidadGrafica.getPosicionX() < 0 || miEntidadGrafica.getPosicionX() > 400)
+		EntidadGrafica miEntidadGrafica = miEntidad.obtenerGrafica();
+		miEntidadGrafica.establecerPosicion(miEntidadGrafica.obtenerPosicionX() + direccionX * velocidad,
+				miEntidadGrafica.obtenerPosicionY() + direccionY * velocidad);
+		if (miEntidadGrafica.obtenerPosicionX() < 0 || miEntidadGrafica.obtenerPosicionX() > 400)
 			salirsePorX();
-		if (miEntidadGrafica.getPosicionY() < -100 || miEntidadGrafica.getPosicionY() > 400)
+		if (miEntidadGrafica.obtenerPosicionY() < -100 || miEntidadGrafica.obtenerPosicionY() > 400)
 			salirsePorY();
 	}
 
-	public void setDireccionX(int x) {
+	public void establecerDireccionX(int x) {
 		direccionX = x;
 	}
 
-	public void setDireccionY(int y) {
+	public void establecerDireccionY(int y) {
 		direccionY = y;
 	}
 
-	public void setVelocidad(int v) {
+	public void establecerVelocidad(int v) {
 		velocidad = v;
 	}
 	
-	public int getVelocidad() {
+	public int obtenerVelocidad() {
 		return velocidad;
 	}
 	protected abstract void salirsePorX();

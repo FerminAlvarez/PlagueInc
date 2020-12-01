@@ -44,7 +44,7 @@ public class VisitorInfectado implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		e.recibirDano(miEntidad.getDano());
+		e.recibirDano(miEntidad.obtenerDano());
 	}
 
 	@Override

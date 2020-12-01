@@ -28,14 +28,14 @@ public class VisitorPremioCuarentena implements Visitor{
 	@Override
 	public void visitar(Alfa e) {
 		// Debería obtener la velocidad anterior
-		int velocidadAnterior = e.getMovimiento().getVelocidad();
-		e.getMovimiento().setVelocidad(0);
+		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
+		e.obtenerMovimiento().establecerVelocidad(0);
 		System.out.println("Alfa");
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				e.getMovimiento().setVelocidad(velocidadAnterior);
+				e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
 			}
 
 		};
@@ -44,14 +44,14 @@ public class VisitorPremioCuarentena implements Visitor{
 
 	@Override
 	public void visitar(Beta e) {
-		int velocidadAnterior = e.getMovimiento().getVelocidad();
-		e.getMovimiento().setVelocidad(0);
+		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
+		e.obtenerMovimiento().establecerVelocidad(0);
 		System.out.println("Beta");
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				e.getMovimiento().setVelocidad(velocidadAnterior);
+				e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
 			}
 
 		};

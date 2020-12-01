@@ -88,7 +88,7 @@ public class GUI extends JFrame {
 		Fondo.establecerFondo(direccionFondo);
 	}
 
-	public JPanel getCampo() {
+	public JPanel obtenerCampo() {
 		return Fondo;
 	}
 	

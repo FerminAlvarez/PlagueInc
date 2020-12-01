@@ -25,7 +25,7 @@ public class Nivel1 extends EstadoNivel{
 		delay = 120;
 	}
 	
-	public String getFondo() {
+	public String obtenerFondo() {
 		return fondo;
 	}
 

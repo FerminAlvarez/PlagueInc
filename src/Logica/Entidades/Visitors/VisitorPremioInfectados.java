@@ -24,12 +24,12 @@ public class VisitorPremioInfectados implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		int velocidadAnterior = e.getMovimiento().getVelocidad();
+		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
 		try {
-			e.getMovimiento().setVelocidad(0);
+			e.obtenerMovimiento().establecerVelocidad(0);
 			System.out.println("AAAA");
 			Thread.sleep(1000);
-			e.getMovimiento().setVelocidad(velocidadAnterior);
+			e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
 			
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
@@ -39,12 +39,12 @@ public class VisitorPremioInfectados implements Visitor{
 
 	@Override
 	public void visitar(Beta e) {
-		int velocidadAnterior = e.getMovimiento().getVelocidad();
+		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
 		try {
-			e.getMovimiento().setVelocidad(0);
+			e.obtenerMovimiento().establecerVelocidad(0);
 			System.out.println("BBB");
 			Thread.sleep(1000);
-			e.getMovimiento().setVelocidad(velocidadAnterior);
+			e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
 			
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block

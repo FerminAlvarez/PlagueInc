@@ -20,11 +20,11 @@ public abstract class EstrategiaDisparo {
 
 	public abstract void disparar();
 	
-	public void setVelocidad(int v) {
+	public void establecerVelocidad(int v) {
 		velocidad = v;
 	}
 	
-	public void setDano(int d) {
+	public void establecerDano(int d) {
 		dano = d;
 	}
 
@@ -33,7 +33,7 @@ public abstract class EstrategiaDisparo {
 		miFabrica = null;
 	}
 	
-	public void setLogica(logica juego) {
+	public void establecerLogica(logica juego) {
 		this.juego = juego;
 	}
 	

@@ -24,7 +24,7 @@ public abstract class EntidadGrafica {
 		alto = imagen.getHeight(null);
 	}
 	
-	public void setPosicion(int x, int y) {
+	public void establecerPosicion(int x, int y) {
 		this.x = x;
 		this.y = y;
 		miColision.setLocation(x, y);
@@ -35,19 +35,19 @@ public abstract class EntidadGrafica {
         imagen = ii.getImage().getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
 	}
 	
-	public Image getImagen() {
+	public Image obtenerImagen() {
 		return imagen;
 	}
 	
-	public int getPosicionX() {
+	public int obtenerPosicionX() {
 		return x;
 	}
 	
-	public int getPosicionY() {
+	public int obtenerPosicionY() {
 		return y;
 	}
 	
-	public Rectangle getBounds() {
+	public Rectangle obtenerBounds() {
 		return miColision;
 	}
 	

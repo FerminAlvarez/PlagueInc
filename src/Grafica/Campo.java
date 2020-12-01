@@ -46,11 +46,11 @@ public class Campo extends JPanel implements ActionListener{
 	private void drawObjects(Graphics g) {
 		if(juego.enCurso()) {
 			Entidad entidad;
-			Iterator<Entidad> it = juego.getEntidades().iterator();
+			Iterator<Entidad> it = juego.obtenerEntidades().iterator();
 			while(it.hasNext()) {
 				entidad = it.next();
-				EntidadGrafica e = entidad.getGrafica();
-				g.drawImage(e.getImagen(), e.getPosicionX(), e.getPosicionY(), this);
+				EntidadGrafica e = entidad.obtenerGrafica();
+				g.drawImage(e.obtenerImagen(), e.obtenerPosicionX(), e.obtenerPosicionY(), this);
 			}
 		}
 	}

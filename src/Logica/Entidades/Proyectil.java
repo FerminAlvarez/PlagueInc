@@ -14,11 +14,11 @@ public abstract class Proyectil extends Entidad{
 	public abstract void impacto(Infectado entidad);
 	public abstract void impacto(Jugador entidad);
 	
-	public void setDano(int dano) {
+	public void establecerDano(int dano) {
 		this.dano = dano;
 	}
 	
-	public int getDano() {
+	public int obtenerDano() {
 		return dano;
 	}
 }

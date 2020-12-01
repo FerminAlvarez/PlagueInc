@@ -41,7 +41,7 @@ public class Jugador extends Personaje{
 		}
 		if(cmd == "Fire")
 			miEstrategiaDisparo.disparar();
-		miEstrategiaMovimiento.setDireccionX(dirX);
+		miEstrategiaMovimiento.establecerDireccionX(dirX);
 	}
 	
 	@Override
@@ -50,7 +50,7 @@ public class Jugador extends Personaje{
 	}
 
 	@Override
-	public void setAtaque(EstrategiaDisparo e) {
+	public void establecerAtaque(EstrategiaDisparo e) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -20,27 +20,27 @@ public abstract class Personaje extends Entidad{
 		gracePeriod = gracePeriod > 0 ? gracePeriod - 1 : 0;
 	}
 	
-	public void setAtaque(EstrategiaDisparo e) {
+	public void establecerAtaque(EstrategiaDisparo e) {
 		miEstrategiaDisparo = e;
 	}
 	
-	public EstrategiaDisparo getAtaque() {
+	public EstrategiaDisparo obtenerAtaque() {
 		return miEstrategiaDisparo;
 	}
 	
-	public int getHP() {
+	public int obtenerHP() {
 		return hp;
 	}
 	
-	public void setHP(int n) {
+	public void establecerHP(int n) {
 		hp = n;
 	}
 	
-	public int getDano() {
+	public int obtenerDano() {
 		return dano;
 	}
 	
-	public void setFabrica(Fabrica miFabrica) {
+	public void establecerFabrica(Fabrica miFabrica) {
 		this.miFabrica = miFabrica;
 		renovarDisparo();
 	}
@@ -58,12 +58,12 @@ public abstract class Personaje extends Entidad{
 		return gracePeriod <= 0;
 	}
 	
-	public void setLogica(logica juego) {
-		super.setLogica(juego);
-		miEstrategiaDisparo.setLogica(juego);
+	public void establecerLogica(logica juego) {
+		super.establecerLogica(juego);
+		miEstrategiaDisparo.establecerLogica(juego);
 	}
 	
-	public logica getLogica() {
+	public logica obtenerLogica() {
 		return juego;
 	}
 	

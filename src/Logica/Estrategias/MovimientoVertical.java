@@ -17,7 +17,7 @@ public class MovimientoVertical extends EstrategiaMovimiento{
 
 	@Override
 	protected void salirsePorY() {
-		miEntidad.getGrafica().setPosicion(miEntidad.getGrafica().getPosicionX(), -60); //TODO que use la parte más alta de la zona de juego
+		miEntidad.obtenerGrafica().establecerPosicion(miEntidad.obtenerGrafica().obtenerPosicionX(), -60); //TODO que use la parte más alta de la zona de juego
 		
 	}
 	

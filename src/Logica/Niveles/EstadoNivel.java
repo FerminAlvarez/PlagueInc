@@ -14,22 +14,22 @@ public abstract class EstadoNivel {
 	protected int delay, totalInfectados, infectadosRestantes;
 	
 	protected abstract void empezar();
-	public abstract String getFondo();
+	public abstract String obtenerFondo();
 	public abstract EstadoNivel siguienteNivel();
 	
-	public int getTotalInfectados() {
+	public int obtenerTotalInfectados() {
 		return totalInfectados;
 	}
 	
-	public int getInfectadosRestantes() {
+	public int obtenerInfectadosRestantes() {
 		return infectadosRestantes;
 	}
 	
-	public int getDelay() {
+	public int obtenerDelay() {
 		return delay;
 	}
 	
-	public Fabrica getFabricaInfectado() {
+	public Fabrica obtenerFabricaInfectado() {
 		Random r = new Random();
 		Fabrica result;
 		int elegido = r.nextInt(infectados.size());
