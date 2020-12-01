@@ -1,5 +1,5 @@
 package Logica.Entidades;
 
 public abstract class PremioTemporal extends Premio {
-	public  abstract void establecerBeneficio(Jugador jugador);
+	public  abstract void establecerBeneficio();
 }

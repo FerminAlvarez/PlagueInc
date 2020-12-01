@@ -51,13 +51,15 @@ public class logica {
 		hiloEntidades= new HiloEntidades(this, 16);
 		Thread d = new Thread(this.hiloEntidades);
 	    d.start();
+	    
+	    //Para probar los premios, actualmente causa un error si se muere el jugador
 		//crearInfectados(3, 1000);
 		
 		
 	}
 	
 	private void crearInfectados(int cantidad, int tiempoEspera) {
-		fabrica = new FabricaAlfa(this);
+		fabrica = new FabricaAlfa();
 		int distancia = 250;
 		for(int i = 0; i<cantidad; i++) {
 			Infectado infectado = (Infectado) fabrica.crear();
@@ -68,13 +70,16 @@ public class logica {
 		
 		//Quitar comentario para testear beneficios permanentes.
 		
-		fabrica = new FabricaPremioPermanente(paraAgregar);
+		fabrica = new FabricaPremioPermanente();
 		PremioPermanente premio = (PremioPermanente) fabrica.crear();
+		premio.setLogica(this);
 		premio.getGrafica().setPosicion(250,10);
 		
 		
-		fabrica = new FabricaPremioTemporal(paraAgregar);
+		fabrica = new FabricaPremioTemporal();
+		
 		PremioTemporal premio1 = (PremioTemporal) fabrica.crear();
+		premio1.setLogica(this);
 		premio1.getGrafica().setPosicion(100,10);
 		
 		
@@ -155,7 +160,7 @@ public class logica {
 				f = nivelActual.getFabricaInfectado();
 				e = f.crear();
 				e.setLogica(this);
-				e.getGrafica().setPosicion(r.nextInt(240) + 10, -50);
+				e.getGrafica().setPosicion(r.nextInt(750) + 10, -50);
 				infectadoDelay = nivelActual.getDelay();
 			}
 			else

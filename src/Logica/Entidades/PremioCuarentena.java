@@ -18,9 +18,10 @@ public class PremioCuarentena extends PremioTemporal {
 	public void aceptar(Visitor v) {
 		v.visitar(this);
 	}
-	
-	public  void establecerBeneficio(Jugador jugador) {
-		for (Entidad entidad : jugador.getLogica().getEntidades()) {
+
+	@Override
+	public void establecerBeneficio() {
+		for (Entidad entidad : juego.getEntidades()) {
 			entidad.aceptar(vis);
 		}
 		destruido = true;

@@ -16,8 +16,8 @@ public class Nivel1 extends EstadoNivel{
 		this.juego = juego;
 		infectados = new LinkedList<Integer>();
 		fabricas = new LinkedList<Fabrica>();
-		fabricas.add(new FabricaAlfa(juego));
-		fabricas.add(new FabricaBeta(juego));
+		fabricas.add(new FabricaAlfa());
+		fabricas.add(new FabricaBeta());
 		infectados.add(3);
 		infectados.add(5);
 		totalInfectados = 8;

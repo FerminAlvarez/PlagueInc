@@ -1,12 +1,11 @@
 package Logica.Entidades.Fabricas;
 
-import Logica.logica;
 import Logica.Entidades.Alfa;
 import Logica.Entidades.Entidad;
 
 public class FabricaAlfa implements Fabrica {
 
-	public FabricaAlfa(logica juego) {
+	public FabricaAlfa() {
 
 	}
 

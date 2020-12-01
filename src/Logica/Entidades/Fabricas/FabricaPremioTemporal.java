@@ -1,7 +1,6 @@
 package Logica.Entidades.Fabricas;
 
 import java.util.Random;
-import java.util.Stack;
 
 import Logica.Entidades.Entidad;
 import Logica.Entidades.PremioCuarentena;
@@ -10,10 +9,8 @@ import Logica.Entidades.PremioTemporal;
 
 public class FabricaPremioTemporal implements Fabrica {
 
-	private Stack<Entidad> cambios;
+	public FabricaPremioTemporal() {
 
-	public FabricaPremioTemporal(Stack<Entidad> cambios) {
-		this.cambios = cambios;
 	}
 
 	@Override
@@ -31,7 +28,7 @@ public class FabricaPremioTemporal implements Fabrica {
 				break;
 			}
 		}
-		cambios.push(premio);
 		return premio;
 	}
+
 }
