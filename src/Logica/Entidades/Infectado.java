@@ -33,6 +33,6 @@ public abstract class Infectado extends Personaje{
 	
 	public void destruir() {
 		super.destruir();
-		juego.infectadoDestruido();
+		juego.infectadoDestruido(miEntidadGrafica.obtenerPosicionX());
 	}
 }

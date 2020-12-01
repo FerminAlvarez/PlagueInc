@@ -3,7 +3,6 @@ package Logica.Entidades.Visitors;
 import Logica.Entidades.Alfa;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
-import Logica.Entidades.Entidad;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioCuarentena;

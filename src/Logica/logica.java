@@ -9,12 +9,10 @@ import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Logica.Entidades.Entidad;
-import Logica.Entidades.Infectado;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 import Logica.Entidades.Fabricas.Fabrica;
-import Logica.Entidades.Fabricas.FabricaAlfa;
 import Logica.Entidades.Fabricas.FabricaPremioPermanente;
 import Logica.Entidades.Fabricas.FabricaPremioTemporal;
 import Logica.Niveles.EstadoNivel;
@@ -23,7 +21,6 @@ import Logica.Niveles.Nivel1;
 public class logica {
 	private GUI gui;
 	private Jugador jugador;
-	private Fabrica fabrica;
 	private List<Entidad> entidades;
 	private Stack<Entidad> paraAgregar;
 	private Stack<Integer> paraBorrar;
@@ -54,56 +51,6 @@ public class logica {
 	    
 	    //Para probar los premios, actualmente causa un error si se muere el jugador
 		//crearInfectados(3, 1000);
-		
-		
-	}
-	
-	private void crearInfectados(int cantidad, int tiempoEspera) {
-		fabrica = new FabricaAlfa();
-		int distancia = 250;
-		for(int i = 0; i<cantidad; i++) {
-			Infectado infectado = (Infectado) fabrica.crear();
-			infectado.establecerLogica(this);
-			infectado.obtenerGrafica().establecerPosicion(distancia * i, 10);
-		}
-		
-		
-		//Quitar comentario para testear beneficios permanentes.
-		
-		fabrica = new FabricaPremioPermanente();
-		PremioPermanente premio = (PremioPermanente) fabrica.crear();
-		premio.establecerLogica(this);
-		premio.obtenerGrafica().establecerPosicion(250,10);
-		
-		
-		fabrica = new FabricaPremioTemporal();
-		
-		PremioTemporal premio1 = (PremioTemporal) fabrica.crear();
-		premio1.establecerLogica(this);
-		premio1.obtenerGrafica().establecerPosicion(100,10);
-		
-		
-		/*
-		premio = (PremioPermanente) fabrica.crear();
-		premio.obtenerGrafica().establecerPosicion(123,10);
-		premio.establecerBeneficio();
-		premio = (PremioPermanente) fabrica.crear();
-		premio.obtenerGrafica().establecerPosicion(234,10);
-		premio.establecerBeneficio();
-		premio = (PremioPermanente) fabrica.crear();
-		premio.obtenerGrafica().establecerPosicion(123,10);
-		premio.establecerBeneficio();
-		premio = (PremioPermanente) fabrica.crear();
-		premio.obtenerGrafica().establecerPosicion(444,10);
-		premio.establecerBeneficio();
-		premio = (PremioPermanente) fabrica.crear();
-		premio.obtenerGrafica().establecerPosicion(55,10);
-		premio.establecerBeneficio();
-		premio = (PremioPermanente) fabrica.crear();
-		premio.obtenerGrafica().establecerPosicion(2,10);
-		premio.establecerBeneficio();
-		
-		*/
 		
 		
 	}
@@ -205,13 +152,39 @@ public class logica {
 		return andando;
 	}
 	
-	public void infectadoDestruido() {
+	public void infectadoDestruido(int x) {
 		infectadosDestruidos++;
+		Random rnd = new Random();
+		int numero = rnd.nextInt(9);
+		if (numero < nivelActual.obtenerProbabilidadPremioPermanente())
+			crearPremioPermanente(x);
+		else {
+			numero = rnd.nextInt (9);
+			if (numero < nivelActual.obtenerProbabilidadPremioTemporal())
+				crearPremioTemporal(x);
+		}
+	}
+	private void crearPremioTemporal (int x) {
+		Fabrica fabrica = new FabricaPremioTemporal();
+		PremioTemporal premio = (PremioTemporal) fabrica.crear();
+		premio.establecerLogica(this);
+		premio.obtenerGrafica().establecerPosicion(x,-10);
 	}
 	
+	private void crearPremioPermanente (int x) {
+		Fabrica fabrica = new FabricaPremioPermanente();
+		PremioPermanente premio = (PremioPermanente) fabrica.crear();
+		premio.establecerLogica(this);
+		premio.obtenerGrafica().establecerPosicion(x,-10);
+	}
 	private void empezarNivel(EstadoNivel n) {
 		infectadosDestruidos = 0;
 		nivelActual = n;
 		gui.establecerFondo(n.obtenerFondo());
+		gui.establecerNivel(n.obtenerNumeroNivel());
+	}
+	
+	public void actualizarHP(int hp) {
+		gui.establecerVida(hp);
 	}
 }

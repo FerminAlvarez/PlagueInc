@@ -23,6 +23,8 @@ public class Nivel3 extends EstadoNivel{
 		totalInfectados = 8;
 		infectadosRestantes = 8;
 		delay = 120;
+		probabilidadPremioPermanente = 3;
+		probabilidadPremioTemporal = 1;
 	}
 	
 	public String obtenerFondo() {
@@ -40,6 +42,11 @@ public class Nivel3 extends EstadoNivel{
 	@Override
 	public EstadoNivel siguienteNivel() {
 		return (new Nivel1(juego));
+	}
+
+	@Override
+	public int obtenerNumeroNivel() {
+		return 3;
 	}
 
 	

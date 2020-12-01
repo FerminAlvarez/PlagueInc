@@ -54,7 +54,10 @@ public class Jugador extends Personaje{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void establecerDaño (int daño) {
+		miEstrategiaDisparo.establecerDano(daño);
+	}
 
 	@Override
 	protected void renovarDisparo() {
@@ -67,6 +70,7 @@ public class Jugador extends Personaje{
 	protected void golpeado() {
 		gracePeriod = maxGracePeriod;
 		System.out.println("JUGADOR HP" + hp);
+		juego.actualizarHP(hp);
 	}
 
 }

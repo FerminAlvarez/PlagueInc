@@ -8,11 +8,17 @@ import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
+import Logica.Entidades.PremioCuarentena;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioCuarentena implements Visitor{
 	private long delay = 5000;
+	private PremioCuarentena miEntidad;
+	
+	public VisitorPremioCuarentena (PremioCuarentena miEntidad) {
+		this.miEntidad = miEntidad;
+	}
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -35,6 +41,8 @@ public class VisitorPremioCuarentena implements Visitor{
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
+				//Para probar. Este hilo sigue "corriendo"
+				System.out.println("AAAAAAAAAA");
 				e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
 			}
 
@@ -56,7 +64,6 @@ public class VisitorPremioCuarentena implements Visitor{
 
 		};
 		timer.schedule(task, delay, delay);
-		
 	}
 
 	@Override

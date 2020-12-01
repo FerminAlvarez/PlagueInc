@@ -12,10 +12,13 @@ public abstract class EstadoNivel {
 	protected List<Integer> infectados;
 	protected logica juego;
 	protected int delay, totalInfectados, infectadosRestantes;
+	protected int probabilidadPremioTemporal;
+	protected int probabilidadPremioPermanente;
 	
 	protected abstract void empezar();
 	public abstract String obtenerFondo();
 	public abstract EstadoNivel siguienteNivel();
+	public abstract int obtenerNumeroNivel();
 	
 	public int obtenerTotalInfectados() {
 		return totalInfectados;
@@ -42,5 +45,12 @@ public abstract class EstadoNivel {
 			infectados.set(elegido, infectados.get(elegido) - 1);
 		infectadosRestantes--;
 		return result;
+	}
+	
+	public int obtenerProbabilidadPremioTemporal () {
+		return probabilidadPremioTemporal;
+	}
+	public int obtenerProbabilidadPremioPermanente () {
+		return probabilidadPremioPermanente;
 	}
 }

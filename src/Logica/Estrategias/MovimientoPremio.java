@@ -2,13 +2,12 @@ package Logica.Estrategias;
 
 import Logica.Entidades.Entidad;
 
-public class MovimientoProyectil extends EstrategiaMovimiento{
-	
-	public MovimientoProyectil(int velocidad, int direccionX, int direccionY, Entidad miEntidad) {
+public class MovimientoPremio extends EstrategiaMovimiento{
+
+	public MovimientoPremio(int velocidad, int direccionX, int direccionY, Entidad miEntidad) {
 		super(velocidad, direccionX, direccionY, miEntidad);
 		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	protected void salirsePorX() {
 		// TODO Auto-generated method stub
@@ -17,9 +16,8 @@ public class MovimientoProyectil extends EstrategiaMovimiento{
 
 	@Override
 	protected void salirsePorY() {
-		miEntidad.destruir();
 	}
-
+	
 	
 
 }

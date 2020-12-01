@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class PremioCuarentenaGrafica extends EntidadGrafica {
 
-	protected int alto = 20, ancho = 20;
+	protected int alto = 50, ancho = 50;
 
 	public PremioCuarentenaGrafica(int x, int y) {
 		super(x, y);

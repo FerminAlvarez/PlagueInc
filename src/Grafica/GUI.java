@@ -15,6 +15,9 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class GUI extends JFrame {
 
@@ -24,6 +27,8 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Campo Fondo;
+	private JLabel lblVida;
+	private JLabel lblNivel;
 
 	/**
 	 * Launch the application.
@@ -66,6 +71,18 @@ public class GUI extends JFrame {
 		Fondo = new Campo(juego);
 		Fondo.setBounds(30, 45, 562, 385);
 		contentPane.add(Fondo);
+		
+		lblNivel = new JLabel("Nivel: 1");
+		lblNivel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNivel.setBounds(262, 15, 46, 14);
+		contentPane.add(lblNivel);
+		
+		lblVida = new JLabel("100%");
+		lblVida.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVida.setBackground(Color.WHITE);
+		lblVida.setForeground(Color.BLACK);
+		lblVida.setBounds(448, 15, 46, 14);
+		contentPane.add(lblVida);
 
 		InputMap im = contentPane.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = contentPane.getActionMap();
@@ -95,5 +112,11 @@ public class GUI extends JFrame {
 	public void actualizarGrafica() {
 		Fondo.repaint();
 	}
-
+	
+	public void establecerVida(int vida) {
+		lblVida.setText(vida+"%");
+	}
+	public void establecerNivel(int nivel) {
+		lblNivel.setText("Nivel: " + nivel);
+	}
 }

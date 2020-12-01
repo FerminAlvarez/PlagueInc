@@ -1,5 +1,8 @@
 package Logica.Entidades.Visitors;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Logica.Entidades.Alfa;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
@@ -11,12 +14,11 @@ import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioSuperArma implements Visitor{
 
-	private PremioSuperArma miEntidad;
-	
+	PremioSuperArma miEntidad;
+	private int delay = 4000;
 	public VisitorPremioSuperArma(PremioSuperArma miEntidad) {
 		this.miEntidad = miEntidad;
 	}
-	
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -31,20 +33,30 @@ public class VisitorPremioSuperArma implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void visitar(Beta e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void visitar(Jugador e) {
-		// TODO Auto-generated method stub
-		
+		int dañoAnterior = e.obtenerDano();
+		System.out.println ("DAÑO TRIPLICADO");
+		e.establecerDaño(dañoAnterior * 3);
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				e.establecerDaño(dañoAnterior);
+				//Este run sigue corriendo
+				System.out.println ("DAÑO NORMAL");
+			}
+		};
+		timer.schedule(task, delay, delay);
+		miEntidad.destruir();
 	}
 
 	@Override

@@ -3,14 +3,14 @@ package Logica.Entidades;
 import Logica.Entidades.EntidadesGraficas.PremioSuperArmaGrafica;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Entidades.Visitors.VisitorPremioSuperArma;
-import Logica.Estrategias.MovimientoVertical;
+import Logica.Estrategias.MovimientoPremio;
 
 public class PremioSuperArma extends PremioTemporal{
 	
 	public PremioSuperArma () {
 		miVisitor = new VisitorPremioSuperArma(this);
 		miEntidadGrafica = new PremioSuperArmaGrafica(0, 0);
-		miEstrategiaMovimiento = new MovimientoVertical(3, 0, 1, this);
+		miEstrategiaMovimiento = new MovimientoPremio(3, 0, 1, this);
 	}
 
 	@Override

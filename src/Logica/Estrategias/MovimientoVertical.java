@@ -1,7 +1,6 @@
 package Logica.Estrategias;
 
 import Logica.Entidades.Entidad;
-import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
 
 public class MovimientoVertical extends EstrategiaMovimiento{
 
