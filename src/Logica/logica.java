@@ -4,29 +4,28 @@ import Grafica.GUI;
 
 import java.util.Random;
 import java.awt.Rectangle;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Logica.Entidades.Entidad;
 import Logica.Entidades.Jugador;
-import Logica.Entidades.PremioPermanente;
-import Logica.Entidades.PremioTemporal;
-import Logica.Entidades.Fabricas.Fabrica;
-import Logica.Entidades.Fabricas.FabricaPremioPermanente;
-import Logica.Entidades.Fabricas.FabricaPremioTemporal;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
 
 public class logica {
 	private GUI gui;
 	private Jugador jugador;
-	private List<Entidad> entidades;
+	private List<Entidad> entidades, paraInvocar;
 	private Stack<Entidad> paraAgregar;
 	private Stack<Integer> paraBorrar;
 	private boolean andando = false;
 	private EstadoNivel nivelActual;
-	private int infectadoDelay, infectadosDestruidos;
+	private int infectadoDelay;
+	private Iterator<Entidad> itInvocador;
 	
 	private HiloEntidades hiloEntidades;
 	
@@ -37,6 +36,7 @@ public class logica {
 	public void iniciar() {
 		paraAgregar = new Stack<Entidad>();
 		paraBorrar = new Stack<Integer>();
+		paraInvocar = new LinkedList<Entidad>();
 		empezarNivel(new Nivel1(this));
 		
 		entidades = new CopyOnWriteArrayList<Entidad>();
@@ -88,8 +88,10 @@ public class logica {
 	private void checkearDestruidos() {
 		int i = 0;
 		for (Entidad it : entidades) {
-			if (it.obtenerDestruido())
-				paraBorrar.push(i);
+			if (it.obtenerDestruido()) {
+				nivelActual.entidadDestruida(it);
+				paraBorrar.push(i);	
+			}
 			i++;
 		}
 		while (!paraBorrar.isEmpty()) {
@@ -99,20 +101,18 @@ public class logica {
 	}
 	
 	private void agregarInfectado() {
-		Fabrica f;
 		Entidad e;
 		Random r = new Random();
-		if(nivelActual.obtenerInfectadosRestantes() > 0) {
-			if(infectadoDelay <= 0) {
-				f = nivelActual.obtenerFabricaInfectado();
-				e = f.crear();
+		if(infectadoDelay <= 0) {
+			if(itInvocador.hasNext()) {
+				e = itInvocador.next();
 				e.establecerLogica(this);
-				e.obtenerGrafica().establecerPosicion(r.nextInt(750) + 10, -50);
+				e.obtenerGrafica().establecerPosicion(r.nextInt(500) + 10, -50);
 				infectadoDelay = nivelActual.obtenerDelay();
 			}
-			else
-				infectadoDelay--;
 		}
+		else
+			infectadoDelay = infectadoDelay > 0 ? infectadoDelay - 1 : 0;
 	}
 	
 	private void agregarNuevos() {
@@ -127,8 +127,12 @@ public class logica {
 		gui.actualizarGrafica();
 	}
 	
+	public Entidad getPremio() {
+		return nivelActual.getPremio();
+	}
+	
 	private void pasarNivel() {
-		if(infectadosDestruidos >= nivelActual.obtenerTotalInfectados()) {
+		if(nivelActual.termino()) {
 			empezarNivel(nivelActual.siguienteNivel());
 		}
 	}
@@ -151,35 +155,16 @@ public class logica {
 	public boolean enCurso() {
 		return andando;
 	}
-	
-	public void infectadoDestruido(int x) {
-		infectadosDestruidos++;
-		Random rnd = new Random();
-		int numero = rnd.nextInt(9);
-		if (numero < nivelActual.obtenerProbabilidadPremioPermanente())
-			crearPremioPermanente(x);
-		else {
-			numero = rnd.nextInt (9);
-			if (numero < nivelActual.obtenerProbabilidadPremioTemporal())
-				crearPremioTemporal(x);
-		}
-	}
-	private void crearPremioTemporal (int x) {
-		Fabrica fabrica = new FabricaPremioTemporal();
-		PremioTemporal premio = (PremioTemporal) fabrica.crear();
-		premio.establecerLogica(this);
-		premio.obtenerGrafica().establecerPosicion(x,-10);
-	}
-	
-	private void crearPremioPermanente (int x) {
-		Fabrica fabrica = new FabricaPremioPermanente();
-		PremioPermanente premio = (PremioPermanente) fabrica.crear();
-		premio.establecerLogica(this);
-		premio.obtenerGrafica().establecerPosicion(x,-10);
-	}
+
 	private void empezarNivel(EstadoNivel n) {
-		infectadosDestruidos = 0;
 		nivelActual = n;
+		n.inicializar();
+		for(Entidad it : n.getEntidades())
+			paraInvocar.add(it);
+		Collections.shuffle(paraInvocar);
+		itInvocador = paraInvocar.iterator();
+		
+		
 		gui.establecerFondo(n.obtenerFondo());
 		gui.establecerNivel(n.obtenerNumeroNivel());
 	}

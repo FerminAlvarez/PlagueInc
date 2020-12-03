@@ -1,20 +1,19 @@
 package Logica;
 
-public class HiloEntidades implements Runnable{
+public class HiloEntidades implements Runnable {
 	private logica juego;
 	private boolean reproducir = true;
 	private long tiempoEspera;
-	
-	
+
 	public HiloEntidades(logica juego, long tiempoDesplazamiento) {
 		this.juego = juego;
 		tiempoEspera = tiempoDesplazamiento;
 	}
-	
+
 	public void arrancarHilo() {
 		reproducir = true;
 	}
-	
+
 	public void detenerHilo() {
 		reproducir = false;
 	}
@@ -23,16 +22,13 @@ public class HiloEntidades implements Runnable{
 	public void run() {
 		try {
 			while (reproducir) {
-				
+
 				juego.pasarFrame();
-				
+
 				Thread.sleep(tiempoEspera);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		}
 	}
-	
-		
-	
+}

@@ -3,9 +3,14 @@ package Logica.Niveles;
 import java.util.LinkedList;
 
 import Logica.logica;
+import Logica.Entidades.Entidad;
 import Logica.Entidades.Fabricas.Fabrica;
 import Logica.Entidades.Fabricas.FabricaAlfa;
 import Logica.Entidades.Fabricas.FabricaBeta;
+import Logica.Entidades.Fabricas.FabricaCuarentena;
+import Logica.Entidades.Fabricas.FabricaSuperArma;
+import Logica.Entidades.Fabricas.FabricaVelocidad;
+import Logica.Entidades.Fabricas.FabricaVida;
 
 public class Nivel3 extends EstadoNivel{
 	
@@ -14,29 +19,24 @@ public class Nivel3 extends EstadoNivel{
 	
 	public Nivel3(logica juego) {
 		this.juego = juego;
-		infectados = new LinkedList<Integer>();
-		fabricas = new LinkedList<Fabrica>();
-		fabricas.add(new FabricaAlfa());
-		fabricas.add(new FabricaBeta());
-		infectados.add(3);
-		infectados.add(5);
-		totalInfectados = 8;
-		infectadosRestantes = 8;
+		fabricasEntidades = new LinkedList<Fabrica>();
+		misPremios = new LinkedList<Fabrica>();
+		cantidad = new LinkedList<Integer>();
+		misEntidades = new LinkedList<Entidad>();
+		fabricasEntidades.add(new FabricaAlfa());
+		cantidad.add(8);
+		fabricasEntidades.add(new FabricaBeta());
+		cantidad.add(8);
 		delay = 120;
-		probabilidadPremioPermanente = 3;
-		probabilidadPremioTemporal = 1;
+		probabilidadPremio = 150;
+		misPremios.add(new FabricaCuarentena());
+		misPremios.add(new FabricaSuperArma());
+		misPremios.add(new FabricaVelocidad());
+		misPremios.add(new FabricaVida());
 	}
 	
 	public String obtenerFondo() {
 		return fondo;
-	}
-
-	
-	
-	@Override
-	protected void empezar() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -48,6 +48,5 @@ public class Nivel3 extends EstadoNivel{
 	public int obtenerNumeroNivel() {
 		return 3;
 	}
-
 	
 }
