@@ -41,7 +41,7 @@ public class Nivel3 extends EstadoNivel{
 
 	@Override
 	public EstadoNivel siguienteNivel() {
-		return (new Nivel1(juego));
+		return null;
 	}
 
 	@Override
