@@ -11,8 +11,8 @@ public class Alfa extends Infectado {
 	protected final int velocidadDisparo = 3;
 	protected final int maxGracePeriod = 15;
 	
-	public Alfa(int hp, int dano) {
-		super(hp, dano);
+	public Alfa() {
+		super(30, 10);
 		miEntidadGrafica = new AlfaGrafica(10, 10);
 		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, this);
 		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);

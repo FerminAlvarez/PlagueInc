@@ -11,10 +11,13 @@ import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import javax.swing.JOptionPane;
+
 import Logica.Entidades.Entidad;
 import Logica.Entidades.Jugador;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
+import Logica.Niveles.Nivel3;
 
 public class logica {
 	private GUI gui;
@@ -133,7 +136,12 @@ public class logica {
 	
 	private void pasarNivel() {
 		if(nivelActual.termino()) {
-			empezarNivel(nivelActual.siguienteNivel());
+			if(nivelActual.siguienteNivel() != null)
+				empezarNivel(nivelActual.siguienteNivel());
+			else {
+				gui.mostrarMensajeTerminado("¡Felicitaciones ha ganado!");
+			}
+				
 		}
 	}
 	
@@ -164,12 +172,16 @@ public class logica {
 		Collections.shuffle(paraInvocar);
 		itInvocador = paraInvocar.iterator();
 		
-		
 		gui.establecerFondo(n.obtenerFondo());
 		gui.establecerNivel(n.obtenerNumeroNivel());
 	}
 	
 	public void actualizarHP(int hp) {
 		gui.establecerVida(hp);
+		if(hp<=0) {
+			gui.mostrarMensajeTerminado("¡UPS! Usted se ha contagiado, realice cuarentena obligatoria");
+		}
 	}
+	
+	
 }

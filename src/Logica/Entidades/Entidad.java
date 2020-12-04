@@ -64,4 +64,7 @@ public abstract class Entidad {
 		return miEstrategiaMovimiento.obtenerVelocidad();
 	}
 	
+	public int obtenerVelocidadInicial() {
+		return miEstrategiaMovimiento.obtenerVelocidadInicial();
+	}
 }

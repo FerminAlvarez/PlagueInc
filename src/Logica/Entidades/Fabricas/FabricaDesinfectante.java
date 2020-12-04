@@ -11,7 +11,7 @@ public class FabricaDesinfectante implements Fabrica{
 	
 	@Override
 	public Entidad crear() {
-		Desinfectante d = new Desinfectante(10);
+		Desinfectante d = new Desinfectante();
 		return d;
 	}
 }

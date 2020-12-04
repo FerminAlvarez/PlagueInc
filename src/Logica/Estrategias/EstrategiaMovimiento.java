@@ -7,12 +7,14 @@ public abstract class EstrategiaMovimiento {
 
 	protected int velocidad, direccionX, direccionY;
 	protected Entidad miEntidad;
+	protected int velocidadInicial;
 
 	protected EstrategiaMovimiento(int velocidad, int direccionX, int direccionY, Entidad miEntidad) {
 		this.velocidad = velocidad;
 		this.direccionX = direccionX;
 		this.direccionY = direccionY;
 		this.miEntidad = miEntidad;
+		this.velocidadInicial = velocidad;
 	}
 
 	public void mover() {
@@ -40,6 +42,9 @@ public abstract class EstrategiaMovimiento {
 	}
 	
 	public int obtenerVelocidad() {
+		return velocidad;
+	}
+	public int obtenerVelocidadInicial() {
 		return velocidad;
 	}
 	protected abstract void salirsePorX();

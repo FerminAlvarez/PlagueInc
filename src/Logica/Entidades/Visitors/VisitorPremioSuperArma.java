@@ -46,7 +46,7 @@ public class VisitorPremioSuperArma implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		int dañoAnterior = e.obtenerDano();
+		int dañoAnterior = e.obtenerDanoInicial();
 		e.establecerDaño(dañoAnterior * 3);
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {

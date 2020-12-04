@@ -11,7 +11,7 @@ public class FabricaBeta implements Fabrica{
 	
 	@Override
 	public Entidad crear() {
-		Beta beta = new Beta(50, 30);
+		Beta beta = new Beta();
 		return beta;
 	}
 }

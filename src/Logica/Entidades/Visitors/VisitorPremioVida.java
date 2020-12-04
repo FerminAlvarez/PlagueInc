@@ -43,7 +43,7 @@ public class VisitorPremioVida implements Visitor{
 
 	@Override
 	public void visitar(Jugador e) {
-		e.establecerHP(100);
+		e.establecerHP(e.obtenerVidaInicial());
 		miEntidad.destruir();
 	}
 

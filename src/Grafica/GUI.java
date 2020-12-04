@@ -16,6 +16,8 @@ import javax.swing.InputMap;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
@@ -118,5 +120,10 @@ public class GUI extends JFrame {
 	}
 	public void establecerNivel(int nivel) {
 		lblNivel.setText("Nivel: " + nivel);
+	}
+	
+	public void mostrarMensajeTerminado(String estado) {
+		JOptionPane.showMessageDialog(null, estado);
+		System.exit(0);
 	}
 }

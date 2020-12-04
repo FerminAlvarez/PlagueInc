@@ -8,25 +8,14 @@ import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
-import Logica.Entidades.PremioCuarentena;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioCuarentena implements Visitor{
 	private long delay = 5000;
 	
-	private static VisitorPremioCuarentena miInstancia;
-	private TimerTask miTimerTaskAlfa, miTimerTaskBeta;
-	private int velocidadAnterior;
-	
-	private VisitorPremioCuarentena () {
+	public VisitorPremioCuarentena () {
 		
-	}
-	
-	public static VisitorPremioCuarentena obtenerVisitorPremioCuarentena() {
-		if(miInstancia == null)
-			miInstancia = new VisitorPremioCuarentena();
-		return miInstancia;
 	}
 	
 	@Override
@@ -43,34 +32,23 @@ public class VisitorPremioCuarentena implements Visitor{
 
 	@Override
 	public void visitar(Alfa e) {
-		// Debería obtener la velocidad anterior
-		int velocidadAnterior;
-		if(miTimerTaskAlfa == null) {
-			velocidadAnterior = e.obtenerVelocidad();
-			miTimerTaskAlfa = new TimerTask() {
-				@Override
-				public void run() {
-					e.establecerVelocidad(velocidadAnterior);
-					this.cancel();
-				}
-				
-				public int obtenerVelocidadAnterior() {
-					return velocidadAnterior;
-				}
-			};
-			
-		}
-		else {
-			
-		}
-		e.establecerVelocidad(0);
+		int velocidadAnterior = e.obtenerVelocidadInicial();
+		e.obtenerMovimiento().establecerVelocidad(0);
 		Timer timer = new Timer();
-		timer.schedule(miTimerTaskAlfa, delay, delay);
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				e.establecerVelocidad(velocidadAnterior);
+				System.out.println("Ya no ralentizo.");
+				this.cancel();
+			}
+		};
+		timer.schedule(task, delay, delay);
 	}
 
 	@Override
 	public void visitar(Beta e) {
-		int velocidadAnterior = e.obtenerVelocidad();
+		int velocidadAnterior = e.obtenerVelocidadInicial();
 		e.establecerVelocidad(0);
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
