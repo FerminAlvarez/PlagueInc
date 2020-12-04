@@ -10,7 +10,7 @@ public class FabricaEspora implements Fabrica {
 
 	@Override
 	public Entidad crear() {
-		Espora e = new Espora(10);
+		Espora e = new Espora();
 		return e;
 	}
 

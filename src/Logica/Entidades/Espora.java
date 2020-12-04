@@ -7,8 +7,8 @@ import Logica.Estrategias.MovimientoProyectil;
 
 public class Espora extends Proyectil{
 
-	public Espora(int dano) {
-		super(dano);
+	public Espora() {
+		super(10);
 		miEntidadGrafica = new EsporaGrafica(0, 0);
 		miEstrategiaMovimiento = new MovimientoProyectil(3, 0, 1, this);
 	}

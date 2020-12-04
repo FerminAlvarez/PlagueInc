@@ -6,8 +6,8 @@ import Logica.Estrategias.MovimientoVertical;
 
 public class Desinfectante extends Proyectil{
 	
-	public Desinfectante(int dano) {
-		super(dano);
+	public Desinfectante() {
+		super(10);
 		miEntidadGrafica = new DesinfectanteGrafica(0, 0);
 		miEstrategiaMovimiento = new MovimientoVertical(3, 0, 1, this);
 		// TODO Auto-generated constructor stub

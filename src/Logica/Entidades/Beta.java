@@ -10,8 +10,8 @@ public class Beta extends Infectado {
 	protected final int velocidadDisparo = 3;
 	protected final int maxGracePeriod = 15;
 	
-	public Beta(int hp, int dano) {
-		super(hp, dano);
+	public Beta() {
+		super(50, 30);
 		miEntidadGrafica = new BetaGrafica(10, 10);
 		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, this);
 		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);

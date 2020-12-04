@@ -11,7 +11,7 @@ public class FabricaAlfa implements Fabrica {
 
 	@Override
 	public Entidad crear() {
-		Alfa a = new Alfa(30, 10);
+		Alfa a = new Alfa();
 		return a;
 	}
 

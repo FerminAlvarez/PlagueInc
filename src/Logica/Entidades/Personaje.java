@@ -9,10 +9,12 @@ public abstract class Personaje extends Entidad{
 	protected int hp, dano, gracePeriod;
 	protected EstrategiaDisparo miEstrategiaDisparo;
 	protected Fabrica miFabrica;
+	protected int danoInicial;
 	
 	protected Personaje(int hp, int dano) {
 		this.hp = hp;
 		this.dano = dano;
+		this.danoInicial = dano;
 	}
 	
 	public void mover() {
@@ -66,6 +68,11 @@ public abstract class Personaje extends Entidad{
 	public logica obtenerLogica() {
 		return juego;
 	}
+	
+	public int obtenerDanoInicial() {
+		return danoInicial;
+	}
+	
 	
 	protected abstract void golpeado();
 	protected abstract void renovarDisparo();
