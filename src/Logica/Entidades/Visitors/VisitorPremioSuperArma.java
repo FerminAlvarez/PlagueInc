@@ -16,6 +16,9 @@ public class VisitorPremioSuperArma implements Visitor{
 
 	PremioSuperArma miEntidad;
 	private int delay = 4000;
+	
+	
+	
 	public VisitorPremioSuperArma(PremioSuperArma miEntidad) {
 		this.miEntidad = miEntidad;
 	}
@@ -44,15 +47,13 @@ public class VisitorPremioSuperArma implements Visitor{
 	@Override
 	public void visitar(Jugador e) {
 		int dañoAnterior = e.obtenerDano();
-		System.out.println ("DAÑO TRIPLICADO");
 		e.establecerDaño(dañoAnterior * 3);
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				e.establecerDaño(dañoAnterior);
-				//Este run sigue corriendo
-				System.out.println ("DAÑO NORMAL");
+				this.cancel();
 			}
 		};
 		timer.schedule(task, delay, delay);

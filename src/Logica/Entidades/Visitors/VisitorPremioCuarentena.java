@@ -14,11 +14,21 @@ import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioCuarentena implements Visitor{
 	private long delay = 5000;
-	private PremioCuarentena miEntidad;
 	
-	public VisitorPremioCuarentena (PremioCuarentena miEntidad) {
-		this.miEntidad = miEntidad;
+	private static VisitorPremioCuarentena miInstancia;
+	private TimerTask miTimerTaskAlfa, miTimerTaskBeta;
+	private int velocidadAnterior;
+	
+	private VisitorPremioCuarentena () {
+		
 	}
+	
+	public static VisitorPremioCuarentena obtenerVisitorPremioCuarentena() {
+		if(miInstancia == null)
+			miInstancia = new VisitorPremioCuarentena();
+		return miInstancia;
+	}
+	
 	@Override
 	public void visitar(Desinfectante e) {
 		// TODO Auto-generated method stub
@@ -34,32 +44,40 @@ public class VisitorPremioCuarentena implements Visitor{
 	@Override
 	public void visitar(Alfa e) {
 		// Debería obtener la velocidad anterior
-		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
-		e.obtenerMovimiento().establecerVelocidad(0);
-		System.out.println("Alfa");
+		int velocidadAnterior;
+		if(miTimerTaskAlfa == null) {
+			velocidadAnterior = e.obtenerVelocidad();
+			miTimerTaskAlfa = new TimerTask() {
+				@Override
+				public void run() {
+					e.establecerVelocidad(velocidadAnterior);
+					this.cancel();
+				}
+				
+				public int obtenerVelocidadAnterior() {
+					return velocidadAnterior;
+				}
+			};
+			
+		}
+		else {
+			
+		}
+		e.establecerVelocidad(0);
 		Timer timer = new Timer();
-		TimerTask task = new TimerTask() {
-			@Override
-			public void run() {
-				//Para probar. Este hilo sigue "corriendo"
-				System.out.println("AAAAAAAAAA");
-				e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
-			}
-
-		};
-		timer.schedule(task, delay, delay);
+		timer.schedule(miTimerTaskAlfa, delay, delay);
 	}
 
 	@Override
 	public void visitar(Beta e) {
-		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
-		e.obtenerMovimiento().establecerVelocidad(0);
-		System.out.println("Beta");
+		int velocidadAnterior = e.obtenerVelocidad();
+		e.establecerVelocidad(0);
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
+				e.establecerVelocidad(velocidadAnterior);
+				this.cancel();
 			}
 
 		};

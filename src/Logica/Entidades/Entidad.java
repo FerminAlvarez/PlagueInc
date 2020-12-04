@@ -56,4 +56,12 @@ public abstract class Entidad {
 		return miVisitor;
 	}
 	
+	public void establecerVelocidad(int n) {
+		miEstrategiaMovimiento.establecerVelocidad(n);
+	}
+	
+	public int obtenerVelocidad() {
+		return miEstrategiaMovimiento.obtenerVelocidad();
+	}
+	
 }
