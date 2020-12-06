@@ -28,11 +28,11 @@ public class Nivel1 extends EstadoNivel{
 		fabricasEntidades.add(new FabricaBeta());
 		cantidad.add(2);
 		delay = 120;
-		probabilidadPremio = 500;
-		//misPremios.add(new FabricaCuarentena());
+		probabilidadPremio = 120;
+		misPremios.add(new FabricaCuarentena());
 		misPremios.add(new FabricaSuperArma());
-		//misPremios.add(new FabricaVelocidad());
-		//misPremios.add(new FabricaVida());
+		misPremios.add(new FabricaVelocidad());
+		misPremios.add(new FabricaVida());
 	}
 	
 	public String obtenerFondo() {
