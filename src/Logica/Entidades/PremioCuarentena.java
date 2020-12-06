@@ -10,7 +10,7 @@ public class PremioCuarentena extends PremioTemporal {
 	VisitorPremioCuarentena vis = new VisitorPremioCuarentena();
 	public PremioCuarentena () {
 		miVisitor = new VisitorPremio(this);
-		miEntidadGrafica = new PremioCuarentenaGrafica(0, 0);
+		miEntidadGrafica = new PremioCuarentenaGrafica();
 		miEstrategiaMovimiento = new MovimientoPremio(3, 0, 1, this);
 	}
 

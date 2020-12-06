@@ -6,7 +6,7 @@ import Logica.Estrategias.EstrategiaDisparo;
 
 public abstract class Personaje extends Entidad{
 
-	protected int hp, dano, gracePeriod;
+	protected int hp, gracePeriod;
 	protected EstrategiaDisparo miEstrategiaDisparo;
 	protected Fabrica miFabrica;
 	protected int danoInicial;
@@ -38,10 +38,6 @@ public abstract class Personaje extends Entidad{
 	
 	public void establecerHP(int n) {
 		hp = n;
-	}
-	
-	public int obtenerDano() {
-		return dano;
 	}
 	
 	public void establecerFabrica(Fabrica miFabrica) {

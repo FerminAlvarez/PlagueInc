@@ -1,5 +1,6 @@
 package Logica.Entidades.EntidadesGraficas;
 
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -9,9 +10,8 @@ public class PremioSuperArmaGrafica extends EntidadGrafica {
 
 	protected int alto = 50, ancho = 50;
 
-	public PremioSuperArmaGrafica(int x, int y) {
-		super(x, y);
-		miColision.setBounds(x, y, alto, ancho);
+	public PremioSuperArmaGrafica() {
+		miColision = new Rectangle(-700, 0, ancho, alto);
 		InputStream in = JugadorGrafica.class.getClassLoader()
 				.getResourceAsStream("imagenes/Entidades/PremioSuperArma.png");
 		try {
@@ -22,4 +22,20 @@ public class PremioSuperArmaGrafica extends EntidadGrafica {
 		getImageDimensions();
 	}
 
+	@Override
+	public int obtenerPuntoDisparoX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int obtenerPuntoDisparoY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected void actualizarBounds() {
+		miColision.setLocation(x, y);
+	}
 }

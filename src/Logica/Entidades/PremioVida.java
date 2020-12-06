@@ -8,7 +8,7 @@ import Logica.Estrategias.MovimientoPremio;
 public class PremioVida extends PremioPermanente{
 	public PremioVida() {
 		miVisitor = new VisitorPremioVida(this);
-		miEntidadGrafica = new PremioVidaGrafica(0,0);
+		miEntidadGrafica = new PremioVidaGrafica();
 		miEstrategiaMovimiento = new MovimientoPremio(5, 0, 1, this);
 	}
 

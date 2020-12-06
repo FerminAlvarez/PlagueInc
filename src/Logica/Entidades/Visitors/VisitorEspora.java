@@ -9,11 +9,11 @@ import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 import Logica.Entidades.Proyectil;
 
-public class VisitorProyectil implements Visitor{
+public class VisitorEspora implements Visitor{
 
-	private Proyectil miEntidad;
+private Proyectil miEntidad;
 	
-	public VisitorProyectil(Proyectil miEntidad) {
+	public VisitorEspora(Proyectil miEntidad) {
 		this.miEntidad = miEntidad;
 	}
 	
@@ -32,21 +32,19 @@ public class VisitorProyectil implements Visitor{
 	@Override
 	public void visitar(Alfa e) {
 		// TODO Auto-generated method stub
-		miEntidad.impacto(e);
+		
 	}
 
 	@Override
 	public void visitar(Beta e) {
 		// TODO Auto-generated method stub
-		miEntidad.impacto(e);
 		
 	}
 
 	@Override
 	public void visitar(Jugador e) {
-		// TODO Auto-generated method stub
-		miEntidad.impacto(e);
-		
+		e.recibirDano(miEntidad.obtenerDano());
+		miEntidad.destruir();
 	}
 
 	@Override

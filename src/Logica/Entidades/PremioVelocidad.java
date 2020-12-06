@@ -9,7 +9,7 @@ public class PremioVelocidad extends PremioPermanente{
 	
 	public PremioVelocidad () {
 		miVisitor = new VisitorPremioVelocidad(this);
-		miEntidadGrafica = new PremioVelocidadGrafica(0,0);
+		miEntidadGrafica = new PremioVelocidadGrafica();
 		miEstrategiaMovimiento = new MovimientoPremio(5, 0, 1, this);
 	}
 	public void aceptar (Visitor v) {

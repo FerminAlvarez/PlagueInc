@@ -8,16 +8,22 @@ public class MovimientoProyectil extends EstrategiaMovimiento{
 		super(velocidad, direccionX, direccionY, miEntidad);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
-	protected void salirsePorX() {
+	protected void salirsePorY() {
+		miEntidad.destruir();
+	}
+
+	@Override
+	protected void salirsePorXIzq() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void salirsePorY() {
-		miEntidad.destruir();
+	protected void salirsePorXDer() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

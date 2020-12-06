@@ -13,12 +13,6 @@ public abstract class EntidadGrafica {
 	protected int x, y, ancho, alto;
 	protected Rectangle miColision;
 	
-	protected EntidadGrafica(int x, int y) {
-		this.x = x;
-		this.y = y;
-		miColision = new Rectangle(x, y, ancho, alto);
-	}
-	
 	protected void getImageDimensions() {
 		ancho = imagen.getWidth(null);
 		alto = imagen.getHeight(null);
@@ -27,7 +21,7 @@ public abstract class EntidadGrafica {
 	public void establecerPosicion(int x, int y) {
 		this.x = x;
 		this.y = y;
-		miColision.setLocation(x, y);
+		actualizarBounds();
 	}
 	
 	public void cambiarImagen(String s) {
@@ -51,4 +45,8 @@ public abstract class EntidadGrafica {
 		return miColision;
 	}
 	
+	public abstract int obtenerPuntoDisparoX();
+	public abstract int obtenerPuntoDisparoY();
+	
+	protected abstract void actualizarBounds();
 }

@@ -1,5 +1,6 @@
 package Logica.Entidades;
 
+import Logica.logica;
 import Logica.Entidades.EntidadesGraficas.JugadorGrafica;
 import Logica.Entidades.Fabricas.FabricaDesinfectante;
 import Logica.Entidades.Visitors.Visitor;
@@ -12,16 +13,16 @@ public class Jugador extends Personaje{
 	
 	private int dirX;
 	private final int velocidadDisparo = -5;
-	private final int velocidad = 5;
 	private final int maxGracePeriod = 60;
 	
 	public Jugador(int hp, int dano) {
 		super(hp, dano);
 		miFabrica = new FabricaDesinfectante();
-		miEntidadGrafica = new JugadorGrafica(300, 300);
-		miEstrategiaMovimiento = new MovimientoHorizontal(1, 0, 0, this);
-		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
-		miVisitor = new VisitorJugador(this);
+		miEntidadGrafica = new JugadorGrafica();
+		miEntidadGrafica.establecerPosicion(300, 300);
+		miEstrategiaMovimiento = new MovimientoHorizontal(5, 0, 0, this);
+		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, this);
+		miVisitor = new VisitorJugador();
 		dirX = 0;
 	}
 
@@ -29,15 +30,15 @@ public class Jugador extends Personaje{
 	public void accion(String estado, String cmd) {
 		if(cmd == "RightArrow") {
 			if(estado == "Press")
-				dirX = velocidad;
+				dirX = 1;
 			else
-				dirX = dirX == velocidad ? 0 : dirX;
+				dirX = dirX == 1 ? 0 : dirX;
 		}
 		if(cmd == "LeftArrow") {
 			if(estado == "Press")
-				dirX = -velocidad;
+				dirX = -1;
 			else
-				dirX = dirX == -velocidad ? 0 : dirX;
+				dirX = dirX == -1 ? 0 : dirX;
 		}
 		if(cmd == "Fire")
 			miEstrategiaDisparo.disparar();
@@ -54,18 +55,29 @@ public class Jugador extends Personaje{
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void establecerDano(int d) {
+		super.establecerDano(d);
+		renovarDisparo();
+	}
 	
-	public void establecerDaño (int daño) {
-		miEstrategiaDisparo.establecerDano(daño);
+	@Override
+	protected void renovarDisparo() {
+		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, this);
+		miEstrategiaDisparo.establecerLogica(juego);
 	}
 
 	@Override
-	protected void renovarDisparo() {
-		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
-		
+	public void establecerLogica(logica juego) {
+		super.establecerLogica(juego);
+		juego.actualizarHP(hp);
 	}
 
-
+	public void establecerHP(int n) {
+		super.establecerHP(n);
+		juego.actualizarHP(hp);
+	}
+	
 	@Override
 	protected void golpeado() {
 		gracePeriod = maxGracePeriod;

@@ -9,7 +9,7 @@ public class PremioSuperArma extends PremioTemporal{
 	
 	public PremioSuperArma () {
 		miVisitor = new VisitorPremioSuperArma(this);
-		miEntidadGrafica = new PremioSuperArmaGrafica(0, 0);
+		miEntidadGrafica = new PremioSuperArmaGrafica();
 		miEstrategiaMovimiento = new MovimientoPremio(3, 0, 1, this);
 	}
 

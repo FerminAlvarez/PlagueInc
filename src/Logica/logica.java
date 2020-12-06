@@ -11,13 +11,10 @@ import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.swing.JOptionPane;
-
 import Logica.Entidades.Entidad;
 import Logica.Entidades.Jugador;
 import Logica.Niveles.EstadoNivel;
 import Logica.Niveles.Nivel1;
-import Logica.Niveles.Nivel3;
 
 public class logica {
 	private GUI gui;
@@ -27,7 +24,7 @@ public class logica {
 	private Stack<Integer> paraBorrar;
 	private boolean andando = false;
 	private EstadoNivel nivelActual;
-	private int infectadoDelay;
+	private int infectadoDelay, terminarNivelDelay;
 	private Iterator<Entidad> itInvocador;
 	
 	private HiloEntidades hiloEntidades;
@@ -39,7 +36,6 @@ public class logica {
 	public void iniciar() {
 		paraAgregar = new Stack<Entidad>();
 		paraBorrar = new Stack<Integer>();
-		paraInvocar = new LinkedList<Entidad>();
 		empezarNivel(new Nivel1(this));
 		
 		entidades = new CopyOnWriteArrayList<Entidad>();
@@ -51,9 +47,6 @@ public class logica {
 		hiloEntidades= new HiloEntidades(this, 16);
 		Thread d = new Thread(this.hiloEntidades);
 	    d.start();
-	    
-	    //Para probar los premios, actualmente causa un error si se muere el jugador
-		//crearInfectados(3, 1000);
 		
 		
 	}
@@ -77,10 +70,10 @@ public class logica {
 	private void checkearColisiones() {
 		Rectangle colisionA, colisionB;
 		for (Entidad it : entidades) {
-			colisionA = it.obtenerGrafica().obtenerBounds();
+			colisionA = it.obtenerBounds();
 			for (Entidad otro : entidades) {
 				if (it != otro) {
-					colisionB = otro.obtenerGrafica().obtenerBounds();
+					colisionB = otro.obtenerBounds();
 					if (colisionA.intersects(colisionB))
 						it.colision(otro);
 				}
@@ -110,7 +103,7 @@ public class logica {
 			if(itInvocador.hasNext()) {
 				e = itInvocador.next();
 				e.establecerLogica(this);
-				e.obtenerGrafica().establecerPosicion(r.nextInt(500) + 10, -50);
+				e.establecerPosicion(r.nextInt(500), -70);
 				infectadoDelay = nivelActual.obtenerDelay();
 			}
 		}
@@ -136,11 +129,14 @@ public class logica {
 	
 	private void pasarNivel() {
 		if(nivelActual.termino()) {
-			if(nivelActual.siguienteNivel() != null)
-				empezarNivel(nivelActual.siguienteNivel());
-			else {
-				gui.mostrarMensajeTerminado("¡Felicitaciones ha ganado!");
+			if(nivelActual.siguienteNivel() != null) {
+				if(terminarNivelDelay <= 0)
+					empezarNivel(nivelActual.siguienteNivel());
+				else
+					terminarNivelDelay--;
 			}
+			else
+				gui.victoria();
 				
 		}
 	}
@@ -150,10 +146,7 @@ public class logica {
 	}
 	
 	public void accionJugador(String estado, String cmd) {
-		if(jugador != null)
-			jugador.accion(estado, cmd);
-		else
-			System.out.println("JUGADOR NULL");
+		jugador.accion(estado, cmd);
 	}
 	
 	public List<Entidad> obtenerEntidades(){
@@ -167,6 +160,8 @@ public class logica {
 	private void empezarNivel(EstadoNivel n) {
 		nivelActual = n;
 		n.inicializar();
+		terminarNivelDelay = 120;
+		paraInvocar = new LinkedList<Entidad>();
 		for(Entidad it : n.getEntidades())
 			paraInvocar.add(it);
 		Collections.shuffle(paraInvocar);
@@ -175,13 +170,12 @@ public class logica {
 		gui.establecerFondo(n.obtenerFondo());
 		gui.establecerNivel(n.obtenerNumeroNivel());
 	}
-	
+
 	public void actualizarHP(int hp) {
 		gui.establecerVida(hp);
-		if(hp<=0) {
-			gui.mostrarMensajeTerminado("¡UPS! Usted se ha contagiado, realice cuarentena obligatoria");
+		if (hp <= 0) {
+			gui.derrota();
 		}
 	}
-	
 	
 }

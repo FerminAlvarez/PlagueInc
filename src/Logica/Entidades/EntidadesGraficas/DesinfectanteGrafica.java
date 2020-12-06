@@ -1,5 +1,6 @@
 package Logica.Entidades.EntidadesGraficas;
 
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -9,9 +10,8 @@ public class DesinfectanteGrafica extends EntidadGrafica{
 
 	protected int alto = 32, ancho = 13;
 	
-	public DesinfectanteGrafica(int x, int y) {
-		super(x, y);
-		miColision.setBounds(x, y, alto, ancho);
+	public DesinfectanteGrafica() {
+		miColision = new Rectangle(-300, 0, ancho, alto);
 		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Jeringa.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
@@ -19,6 +19,23 @@ public class DesinfectanteGrafica extends EntidadGrafica{
 			e.printStackTrace();
 		}
 		getImageDimensions();
+	}
+
+	@Override
+	public int obtenerPuntoDisparoX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int obtenerPuntoDisparoY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	protected void actualizarBounds() {
+		miColision.setLocation(x, y);
 	}
 
 }

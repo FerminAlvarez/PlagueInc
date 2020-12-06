@@ -8,14 +8,20 @@ public class MovimientoPremio extends EstrategiaMovimiento{
 		super(velocidad, direccionX, direccionY, miEntidad);
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	protected void salirsePorX() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	protected void salirsePorY() {
+	}
+	
+	@Override
+	protected void salirsePorXIzq() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	protected void salirsePorXDer() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

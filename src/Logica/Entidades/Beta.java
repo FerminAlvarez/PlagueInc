@@ -12,9 +12,9 @@ public class Beta extends Infectado {
 	
 	public Beta() {
 		super(50, 30);
-		miEntidadGrafica = new BetaGrafica(10, 10);
+		miEntidadGrafica = new BetaGrafica();
 		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, this);
-		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
+		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, this);
 		
 	}
 
@@ -25,7 +25,7 @@ public class Beta extends Infectado {
 
 	@Override
 	protected void renovarDisparo() {
-		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
+		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, this);
 	}
 
 	@Override

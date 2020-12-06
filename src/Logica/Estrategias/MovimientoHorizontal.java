@@ -9,16 +9,21 @@ public class MovimientoHorizontal extends EstrategiaMovimiento{
 		super(velocidad, direccionX, direccionY, miEntidad);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
-	protected void salirsePorX() {
+	protected void salirsePorY() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void salirsePorY() {
-		// TODO Auto-generated method stub
+	protected void salirsePorXIzq() {
+		miEntidad.establecerPosicion(miEntidad.obtenerPosicionX() + velocidad, miEntidad.obtenerPosicionY());
+	}
+
+	@Override
+	protected void salirsePorXDer() {
+		miEntidad.establecerPosicion(miEntidad.obtenerPosicionX() - velocidad, miEntidad.obtenerPosicionY());
 		
 	}
 

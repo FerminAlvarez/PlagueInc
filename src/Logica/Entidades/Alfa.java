@@ -13,9 +13,9 @@ public class Alfa extends Infectado {
 	
 	public Alfa() {
 		super(30, 10);
-		miEntidadGrafica = new AlfaGrafica(10, 10);
+		miEntidadGrafica = new AlfaGrafica();
 		miEstrategiaMovimiento = new MovimientoVertical(1, 0, 1, this);
-		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
+		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, this);
 		
 	}
 
@@ -26,7 +26,7 @@ public class Alfa extends Infectado {
 
 	@Override
 	protected void renovarDisparo() {
-		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, miEntidadGrafica);
+		miEstrategiaDisparo = new DisparoEspora(dano, velocidadDisparo, miFabrica, this);
 	}
 
 	@Override

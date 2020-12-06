@@ -1,7 +1,6 @@
 package Logica.Estrategias;
 
 import Logica.Entidades.Entidad;
-import Logica.Entidades.EntidadesGraficas.EntidadGrafica;
 
 public abstract class EstrategiaMovimiento {
 
@@ -18,14 +17,13 @@ public abstract class EstrategiaMovimiento {
 	}
 
 	public void mover() {
-		// int nuevoX = miEntidadGrafica.obtenerPosicionX() + direccionX * velocidad;
-		// TODO Agregar checkeo de si se sale del mapa
-		EntidadGrafica miEntidadGrafica = miEntidad.obtenerGrafica();
-		miEntidadGrafica.establecerPosicion(miEntidadGrafica.obtenerPosicionX() + direccionX * velocidad,
-				miEntidadGrafica.obtenerPosicionY() + direccionY * velocidad);
-		if (miEntidadGrafica.obtenerPosicionX() < 0 || miEntidadGrafica.obtenerPosicionX() > 400)
-			salirsePorX();
-		if (miEntidadGrafica.obtenerPosicionY() < -100 || miEntidadGrafica.obtenerPosicionY() > 400)
+		miEntidad.establecerPosicion(miEntidad.obtenerPosicionX() + direccionX * velocidad,
+				miEntidad.obtenerPosicionY() + direccionY * velocidad);
+		if (miEntidad.obtenerPosicionX() < 0)
+			salirsePorXIzq();
+		if(miEntidad.obtenerPosicionX() > 500)
+			salirsePorXDer();
+		if (miEntidad.obtenerPosicionY() < -100 || miEntidad.obtenerPosicionY() > 400)
 			salirsePorY();
 	}
 
@@ -47,7 +45,10 @@ public abstract class EstrategiaMovimiento {
 	public int obtenerVelocidadInicial() {
 		return velocidad;
 	}
-	protected abstract void salirsePorX();
+	
+	protected abstract void salirsePorXIzq();
+	
+	protected abstract void salirsePorXDer();
 
 	protected abstract void salirsePorY();
 
