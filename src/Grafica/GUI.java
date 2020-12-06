@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class GUI extends JFrame {
 
@@ -55,7 +56,7 @@ public class GUI extends JFrame {
 
 		logica juego = new logica(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 640, 480);
+		setBounds(100, 100, 806, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -85,6 +86,31 @@ public class GUI extends JFrame {
 		lblVida.setForeground(Color.BLACK);
 		lblVida.setBounds(448, 15, 96, 14);
 		contentPane.add(lblVida);
+		
+		JLabel lblMovimientoDelJugador = new JLabel("Movimiento del jugador");
+		lblMovimientoDelJugador.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMovimientoDelJugador.setBounds(602, 77, 178, 30);
+		contentPane.add(lblMovimientoDelJugador);
+		
+		JLabel lblDisparodeljugador = new JLabel("DisparoDelJugador");
+		lblDisparodeljugador.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisparodeljugador.setBounds(602, 200, 178, 30);
+		contentPane.add(lblDisparodeljugador);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(GUI.class.getResource("/imagenes/escena/FlechaIzquierda.png")));
+		lblNewLabel.setBounds(632, 103, 46, 42);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label = new JLabel("New label");
+		label.setIcon(new ImageIcon(GUI.class.getResource("/imagenes/escena/FlechaDerecha.png")));
+		label.setBounds(708, 103, 46, 42);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("New label");
+		label_1.setIcon(new ImageIcon(GUI.class.getResource("/imagenes/escena/LetraZ.png")));
+		label_1.setBounds(668, 225, 46, 42);
+		contentPane.add(label_1);
 
 		InputMap im = contentPane.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = contentPane.getActionMap();
