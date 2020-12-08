@@ -120,12 +120,14 @@ public class GUI extends JFrame {
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "PressLeftArrow");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "ReleaseLeftArrow");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, 0, false), "PressFire");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, 0, true), "ReleaseFire");
 
 		am.put("PressRightArrow", new Action("Press", "RightArrow", juego));
 		am.put("ReleaseRightArrow", new Action("Release", "RightArrow", juego));
 		am.put("PressLeftArrow", new Action("Press", "LeftArrow", juego));
 		am.put("ReleaseLeftArrow", new Action("Release", "LeftArrow", juego));
 		am.put("PressFire", new Action("Press", "Fire", juego));
+		am.put("ReleaseFire", new Action("Release", "Fire", juego));
 
 	}
 

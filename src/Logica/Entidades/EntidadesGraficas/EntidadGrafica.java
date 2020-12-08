@@ -47,6 +47,7 @@ public abstract class EntidadGrafica {
 	
 	public abstract int obtenerPuntoDisparoX();
 	public abstract int obtenerPuntoDisparoY();
+	public abstract void playSound(String s);
 	
 	protected abstract void actualizarBounds();
 }

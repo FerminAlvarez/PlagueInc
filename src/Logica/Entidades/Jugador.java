@@ -14,6 +14,7 @@ public class Jugador extends Personaje{
 	private int dirX;
 	private final int velocidadDisparo = -5;
 	private final int maxGracePeriod = 60;
+	private boolean disparando;
 	
 	public Jugador(int hp, int dano) {
 		super(hp, dano);
@@ -24,8 +25,17 @@ public class Jugador extends Personaje{
 		miEstrategiaDisparo = new DisparoNormal(dano, velocidadDisparo, miFabrica, this);
 		miVisitor = new VisitorJugador();
 		dirX = 0;
+		disparando = false;
 	}
 
+	public void mover() {
+		super.mover();
+		if(disparando) {
+			if(miEstrategiaDisparo.puedeDisparar())
+				miEntidadGrafica.playSound("Disparo");
+			miEstrategiaDisparo.disparar();
+		}
+	}
 	
 	public void accion(String estado, String cmd) {
 		if(cmd == "RightArrow") {
@@ -40,8 +50,9 @@ public class Jugador extends Personaje{
 			else
 				dirX = dirX == -1 ? 0 : dirX;
 		}
-		if(cmd == "Fire")
-			miEstrategiaDisparo.disparar();
+		if(cmd == "Fire") {
+			disparando = estado == "Press";
+		}
 		miEstrategiaMovimiento.establecerDireccionX(dirX);
 	}
 	
@@ -80,6 +91,7 @@ public class Jugador extends Personaje{
 	
 	@Override
 	protected void golpeado() {
+		super.golpeado();
 		gracePeriod = maxGracePeriod;
 		System.out.println("JUGADOR HP" + hp);
 		juego.actualizarHP(hp);

@@ -7,7 +7,11 @@ public class DisparoEspora extends EstrategiaDisparo{
 
 	public DisparoEspora(int dano, int velocidad, Fabrica miFabrica, Entidad miEntidad) {
 		super(dano, velocidad, miFabrica, miEntidad);
-		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public boolean puedeDisparar() {
+		return false;
 	}
 
 }

@@ -75,6 +75,8 @@ public abstract class Personaje extends Entidad{
 	}
 	
 	
-	protected abstract void golpeado();
+	protected void golpeado() {
+		miEntidadGrafica.playSound("Golpeado");
+	}
 	protected abstract void renovarDisparo();
 }

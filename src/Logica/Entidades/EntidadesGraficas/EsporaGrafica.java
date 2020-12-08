@@ -8,11 +8,11 @@ import javax.imageio.ImageIO;
 
 public class EsporaGrafica extends EntidadGrafica{
 
-protected int alto = 20, ancho = 20;
+	protected int alto = 20, ancho = 20;
 	
 	public EsporaGrafica() {
 		miColision = new Rectangle(-400, 0, ancho, alto);
-		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Espora.png");
+		InputStream in = EsporaGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Espora.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
@@ -36,6 +36,12 @@ protected int alto = 20, ancho = 20;
 	@Override
 	protected void actualizarBounds() {
 		miColision.setLocation(x, y);
+	}
+
+	@Override
+	public void playSound(String s) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

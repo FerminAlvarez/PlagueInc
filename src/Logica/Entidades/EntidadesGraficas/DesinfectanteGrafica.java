@@ -12,7 +12,7 @@ public class DesinfectanteGrafica extends EntidadGrafica{
 	
 	public DesinfectanteGrafica() {
 		miColision = new Rectangle(-300, 0, ancho, alto);
-		InputStream in = JugadorGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Jeringa.png");
+		InputStream in = DesinfectanteGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Jeringa.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
@@ -36,6 +36,12 @@ public class DesinfectanteGrafica extends EntidadGrafica{
 	@Override
 	protected void actualizarBounds() {
 		miColision.setLocation(x, y);
+	}
+
+	@Override
+	public void playSound(String s) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

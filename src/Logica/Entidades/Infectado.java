@@ -1,12 +1,14 @@
 package Logica.Entidades;
 
 
+import java.util.Random;
+
 import Logica.Entidades.Fabricas.FabricaEspora;
 import Logica.Entidades.Visitors.VisitorInfectado;
 
 public abstract class Infectado extends Personaje{
 
-	protected final int cooldownMaximo = 120;
+	protected final int cooldownMaximo = 60;
 	protected int cooldown;
 	
 	protected Infectado(int hp, int dano) {
@@ -18,8 +20,10 @@ public abstract class Infectado extends Personaje{
 	
 	public void mover() {
 		super.mover();
+		Random r = new Random();
 		if(cooldown <= 0) {
-			cooldown = cooldownMaximo;
+			cooldown = r.nextInt(cooldownMaximo) + 120;
+			miEntidadGrafica.playSound("Disparo");
 			disparar();
 		}
 		else

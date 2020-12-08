@@ -30,8 +30,8 @@ public class Beta extends Infectado {
 
 	@Override
 	protected void golpeado() {
+		super.golpeado();
 		gracePeriod = maxGracePeriod;
-		System.out.println("ZOMBIE BETA HP" + hp);
 	}
 
 }

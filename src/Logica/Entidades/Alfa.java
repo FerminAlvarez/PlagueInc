@@ -31,8 +31,8 @@ public class Alfa extends Infectado {
 
 	@Override
 	protected void golpeado() {
+		super.golpeado();
 		gracePeriod = maxGracePeriod;
-		System.out.println("ZOMBIE ALFA HP" + hp);
 	}
 
 }

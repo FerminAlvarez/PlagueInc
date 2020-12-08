@@ -44,6 +44,7 @@ public class VisitorPremioVida implements Visitor{
 	@Override
 	public void visitar(Jugador e) {
 		e.establecerHP(e.obtenerVidaInicial());
+		miEntidad.agarrado();
 		miEntidad.destruir();
 	}
 

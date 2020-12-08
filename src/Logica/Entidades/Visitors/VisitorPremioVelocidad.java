@@ -44,6 +44,7 @@ public class VisitorPremioVelocidad implements Visitor{
 	@Override
 	public void visitar(Jugador e) {
 		e.establecerVelocidad(10);
+		miEntidad.agarrado();
 		miEntidad.destruir();
 	}
 
