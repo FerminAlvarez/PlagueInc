@@ -1,6 +1,6 @@
 package Logica.Entidades.Visitors;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -28,7 +28,7 @@ public class VisitorPremioCuarentena implements Visitor{
 	}
 
 	@Override
-	public void visitar(Alfa e) {
+	public void visitar(Alpha e) {
 		
 	}
 

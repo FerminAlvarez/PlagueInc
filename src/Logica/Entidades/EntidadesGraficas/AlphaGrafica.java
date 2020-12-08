@@ -9,13 +9,13 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class AlfaGrafica extends EntidadGrafica{
+public class AlphaGrafica extends EntidadGrafica{
 
 	protected int alto = 50, ancho = 50, puntoDisparoX = 15, puntoDisparoY = 10;
-	public AlfaGrafica() {
+	public AlphaGrafica() {
 		miColision = new Rectangle(-100, 0, ancho, alto);
 		// TODO Auto-generated constructor stub
-		InputStream in = AlfaGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Infectado1.png");
+		InputStream in = AlphaGrafica.class.getClassLoader().getResourceAsStream("imagenes/Entidades/Infectado1.png");
 		try {
 			imagen = ImageIO.read(in).getScaledInstance(ancho, alto,  java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
@@ -47,7 +47,7 @@ public class AlfaGrafica extends EntidadGrafica{
 		case "Golpeado" : nombre = "InfectadoGolpeado.wav";
 		}
 		try {
-			in = AudioSystem.getAudioInputStream(AlfaGrafica.class.getClassLoader().getResourceAsStream("audios/" + nombre));
+			in = AudioSystem.getAudioInputStream(AlphaGrafica.class.getClassLoader().getResource("audios/" + nombre));
 			Clip clip = AudioSystem.getClip();
 			clip.open(in);
 			clip.start();

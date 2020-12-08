@@ -6,7 +6,7 @@ public interface Visitor {
 
 	public void visitar(Desinfectante e);
 	public void visitar(Espora e);
-	public void visitar(Alfa e);
+	public void visitar(Alpha e);
 	public void visitar(Beta e);
 	public void visitar(Jugador e);
 	public void visitar(PremioTemporal e);

@@ -61,7 +61,6 @@ public class Campo extends JPanel implements ActionListener{
 	}
 	
 	public void establecerFondo(String direccionFondo) {
-		System.out.println("Intento colocar fondo");
 		InputStream in = GUI.class.getClassLoader().getResourceAsStream(direccionFondo);
 		ImageIcon imagen;
 		try {

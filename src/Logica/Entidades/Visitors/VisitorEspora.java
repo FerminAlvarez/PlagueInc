@@ -1,6 +1,6 @@
 package Logica.Entidades.Visitors;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -30,7 +30,7 @@ private Proyectil miEntidad;
 	}
 
 	@Override
-	public void visitar(Alfa e) {
+	public void visitar(Alpha e) {
 		// TODO Auto-generated method stub
 		
 	}

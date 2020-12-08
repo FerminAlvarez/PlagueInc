@@ -43,11 +43,15 @@ public class BetaGrafica extends EntidadGrafica{
 		AudioInputStream in;
 		String nombre = "";
 		switch (s) {
-		case "Disparo" : nombre = "InfectadoDisparo.wav";
-		case "Golpeado" : nombre = "InfectadoGolpeado.wav";
+		case "Disparo":
+			nombre = "InfectadoDisparo.wav";
+			break;
+		case "Golpeado":
+			nombre = "InfectadoGolpeado.wav";
+			break;
 		}
 		try {
-			in = AudioSystem.getAudioInputStream(BetaGrafica.class.getClassLoader().getResourceAsStream("audios/" + nombre));
+			in = AudioSystem.getAudioInputStream(BetaGrafica.class.getClassLoader().getResource("audios/" + nombre));
 			Clip clip = AudioSystem.getClip();
 			clip.open(in);
 			clip.start();

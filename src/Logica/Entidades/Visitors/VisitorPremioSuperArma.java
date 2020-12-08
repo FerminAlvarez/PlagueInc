@@ -3,7 +3,7 @@ package Logica.Entidades.Visitors;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -35,7 +35,7 @@ public class VisitorPremioSuperArma implements Visitor{
 	}
 
 	@Override
-	public void visitar(Alfa e) {
+	public void visitar(Alpha e) {
 		
 	}
 

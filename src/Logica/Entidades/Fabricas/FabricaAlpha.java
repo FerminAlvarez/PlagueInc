@@ -1,17 +1,17 @@
 package Logica.Entidades.Fabricas;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 import Logica.Entidades.Entidad;
 
-public class FabricaAlfa implements Fabrica {
+public class FabricaAlpha implements Fabrica {
 
-	public FabricaAlfa() {
+	public FabricaAlpha() {
 
 	}
 
 	@Override
 	public Entidad crear() {
-		Alfa a = new Alfa();
+		Alpha a = new Alpha();
 		return a;
 	}
 

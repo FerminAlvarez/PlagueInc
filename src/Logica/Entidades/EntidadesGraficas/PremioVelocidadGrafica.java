@@ -48,10 +48,13 @@ public class PremioVelocidadGrafica extends EntidadGrafica {
 		AudioInputStream in;
 		String nombre = "";
 		switch (s) {
-		case "Agarrado" : nombre = "PremioAgarrado.wav";
+		case "Agarrado":
+			nombre = "PremioAgarrado.wav";
+			break;
 		}
 		try {
-			in = AudioSystem.getAudioInputStream(PremioVelocidadGrafica.class.getClassLoader().getResourceAsStream("audios/" + nombre));
+			in = AudioSystem
+					.getAudioInputStream(PremioVelocidadGrafica.class.getClassLoader().getResource("audios/" + nombre));
 			Clip clip = AudioSystem.getClip();
 			clip.open(in);
 			clip.start();

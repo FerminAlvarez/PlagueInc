@@ -1,6 +1,6 @@
 package Logica.Entidades.Visitors;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -23,13 +23,12 @@ public class VisitorPremioInfectados implements Visitor{
 	}
 
 	@Override
-	public void visitar(Alfa e) {
-		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
+	public void visitar(Alpha e) {
+		int velocidadAnterior = e.obtenerVelocidad();
 		try {
-			e.obtenerMovimiento().establecerVelocidad(0);
-			System.out.println("AAAA");
+			e.establecerVelocidad(0);
 			Thread.sleep(1000);
-			e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
+			e.establecerVelocidad(velocidadAnterior);
 			
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
@@ -39,12 +38,11 @@ public class VisitorPremioInfectados implements Visitor{
 
 	@Override
 	public void visitar(Beta e) {
-		int velocidadAnterior = e.obtenerMovimiento().obtenerVelocidad();
+		int velocidadAnterior = e.obtenerVelocidad();
 		try {
-			e.obtenerMovimiento().establecerVelocidad(0);
-			System.out.println("BBB");
+			e.establecerVelocidad(0);
 			Thread.sleep(1000);
-			e.obtenerMovimiento().establecerVelocidad(velocidadAnterior);
+			e.establecerVelocidad(velocidadAnterior);
 			
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block

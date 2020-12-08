@@ -3,7 +3,7 @@ package Logica.Entidades.Visitors;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
@@ -31,15 +31,14 @@ public class VisitorPremioCuarentenaInfectados implements Visitor{
 	}
 
 	@Override
-	public void visitar(Alfa e) {
+	public void visitar(Alpha e) {
 		int velocidadAnterior = e.obtenerVelocidadInicial();
-		e.obtenerMovimiento().establecerVelocidad(0);
+		e.establecerVelocidad(0);
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				e.establecerVelocidad(velocidadAnterior);
-				System.out.println("Ya no ralentizo.");
 				this.cancel();
 			}
 		};

@@ -44,11 +44,15 @@ public class JugadorGrafica extends EntidadGrafica{
 		AudioInputStream in;
 		String nombre = "";
 		switch (s) {
-		case "Disparo" : nombre = "JugadorDisparo.wav";
-		case "Golpeado" : nombre = "JugadorGolpeado.wav";
+		case "Disparo":
+			nombre = "JugadorDisparo.wav";
+			break;
+		case "Golpeado":
+			nombre = "JugadorGolpeado.wav";
+			break;
 		}
 		try {
-			in = AudioSystem.getAudioInputStream(JugadorGrafica.class.getClassLoader().getResourceAsStream("audios/" + nombre));
+			in = AudioSystem.getAudioInputStream(JugadorGrafica.class.getClassLoader().getResource("audios/" + nombre));
 			Clip clip = AudioSystem.getClip();
 			clip.open(in);
 			clip.start();

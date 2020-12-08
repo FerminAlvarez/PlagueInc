@@ -34,20 +34,21 @@ public class logica {
 	}
 	
 	public void iniciar() {
-		paraAgregar = new Stack<Entidad>();
-		paraBorrar = new Stack<Integer>();
-		empezarNivel(new Nivel1(this));
-		
-		entidades = new CopyOnWriteArrayList<Entidad>();
-		
-		jugador = new Jugador(100, 10);
-		jugador.establecerLogica(this);
-		andando = true;
-		
-		hiloEntidades= new HiloEntidades(this, 16);
-		Thread d = new Thread(this.hiloEntidades);
-	    d.start();
-		
+		if(hiloEntidades == null) {
+			paraAgregar = new Stack<Entidad>();
+			paraBorrar = new Stack<Integer>();
+			empezarNivel(new Nivel1(this));
+			
+			entidades = new CopyOnWriteArrayList<Entidad>();
+			
+			jugador = new Jugador(100, 10);
+			jugador.establecerLogica(this);
+			andando = true;
+			
+			hiloEntidades= new HiloEntidades(this, 16);
+			Thread d = new Thread(this.hiloEntidades);
+		    d.start();
+		}
 		
 	}
 	

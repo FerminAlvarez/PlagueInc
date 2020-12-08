@@ -6,7 +6,6 @@ import Logica.Entidades.Fabricas.FabricaDesinfectante;
 import Logica.Entidades.Visitors.Visitor;
 import Logica.Entidades.Visitors.VisitorJugador;
 import Logica.Estrategias.DisparoNormal;
-import Logica.Estrategias.EstrategiaDisparo;
 import Logica.Estrategias.MovimientoHorizontal;
 
 public class Jugador extends Personaje{
@@ -61,12 +60,6 @@ public class Jugador extends Personaje{
 		v.visitar(this);
 	}
 
-	@Override
-	public void establecerAtaque(EstrategiaDisparo e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void establecerDano(int d) {
 		super.establecerDano(d);
 		renovarDisparo();
@@ -93,7 +86,6 @@ public class Jugador extends Personaje{
 	protected void golpeado() {
 		super.golpeado();
 		gracePeriod = maxGracePeriod;
-		System.out.println("JUGADOR HP" + hp);
 		juego.actualizarHP(hp);
 	}
 

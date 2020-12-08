@@ -1,6 +1,6 @@
 package Logica.Entidades.Visitors;
 
-import Logica.Entidades.Alfa;
+import Logica.Entidades.Alpha;
 
 import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
@@ -31,7 +31,7 @@ public class VisitorInfectado implements Visitor{
 	}
 
 	@Override
-	public void visitar(Alfa e) {
+	public void visitar(Alpha e) {
 		// TODO Auto-generated method stub
 		
 	}
