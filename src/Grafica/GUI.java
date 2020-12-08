@@ -87,12 +87,12 @@ public class GUI extends JFrame {
 		lblVida.setBounds(448, 15, 96, 14);
 		contentPane.add(lblVida);
 		
-		JLabel lblMovimientoDelJugador = new JLabel("Movimiento del jugador");
+		JLabel lblMovimientoDelJugador = new JLabel("Movimiento");
 		lblMovimientoDelJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMovimientoDelJugador.setBounds(602, 77, 178, 30);
 		contentPane.add(lblMovimientoDelJugador);
 		
-		JLabel lblDisparodeljugador = new JLabel("DisparoDelJugador");
+		JLabel lblDisparodeljugador = new JLabel("Disparo");
 		lblDisparodeljugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisparodeljugador.setBounds(602, 200, 178, 30);
 		contentPane.add(lblDisparodeljugador);
