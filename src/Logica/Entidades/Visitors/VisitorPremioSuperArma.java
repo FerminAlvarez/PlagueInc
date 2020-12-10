@@ -9,17 +9,16 @@ import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
-import Logica.Entidades.PremioSuperArma;
 import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioSuperArma implements Visitor{
 
-	PremioSuperArma miEntidad;
+	PremioTemporal miEntidad;
 	private int delay = 4000;
 	
 	
 	
-	public VisitorPremioSuperArma(PremioSuperArma miEntidad) {
+	public VisitorPremioSuperArma(PremioTemporal miEntidad) {
 		this.miEntidad = miEntidad;
 	}
 	@Override

@@ -28,7 +28,7 @@ public abstract class EstadoNivel {
 		return misEntidades.isEmpty();
 	}
 	
-	public Entidad getPremio() {
+	public Entidad obtenerPremio() {
 		Entidad result = null;
 		Random r = new Random();
 		if(r.nextInt(probabilidadPremio) >= 100) {
@@ -51,7 +51,7 @@ public abstract class EstadoNivel {
 		return delay;
 	}
 	
-	public List<Entidad> getEntidades() {
+	public List<Entidad> obtenerEntidades() {
 		return misEntidades;
 	}
 }

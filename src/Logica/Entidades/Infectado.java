@@ -37,7 +37,7 @@ public abstract class Infectado extends Personaje{
 	
 	public void destruir() {
 		super.destruir();
-		Entidad miPremio = juego.getPremio();
+		Entidad miPremio = juego.obtenerPremio();
 		if(miPremio != null) {
 			miPremio.establecerLogica(juego);
 			miPremio.obtenerGrafica().establecerPosicion(miEntidadGrafica.obtenerPosicionX(), -10);

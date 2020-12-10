@@ -7,13 +7,12 @@ import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
-import Logica.Entidades.PremioVida;
 
 public class VisitorPremioVida implements Visitor{
 
-	private PremioVida miEntidad;
+	private PremioPermanente miEntidad;
 	
-	public VisitorPremioVida(PremioVida miEntidad) {
+	public VisitorPremioVida(PremioPermanente miEntidad) {
 		this.miEntidad = miEntidad;
 	}
 	

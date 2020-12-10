@@ -7,7 +7,7 @@ import Logica.Entidades.Visitors.VisitorPremioCuarentenaInfectados;
 import Logica.Estrategias.MovimientoPremio;
 
 public class PremioCuarentena extends PremioTemporal {
-	VisitorPremioCuarentenaInfectados vis = new VisitorPremioCuarentenaInfectados();
+	
 	public PremioCuarentena () {
 		miVisitor = new VisitorPremioCuarentena(this);
 		miEntidadGrafica = new PremioCuarentenaGrafica();
@@ -21,6 +21,7 @@ public class PremioCuarentena extends PremioTemporal {
 
 	@Override
 	public void establecerBeneficio() {
+		VisitorPremioCuarentenaInfectados vis = new VisitorPremioCuarentenaInfectados();
 		for (Entidad entidad : juego.obtenerEntidades()) {
 			entidad.aceptar(vis);
 		}

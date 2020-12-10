@@ -5,14 +5,13 @@ import Logica.Entidades.Beta;
 import Logica.Entidades.Desinfectante;
 import Logica.Entidades.Espora;
 import Logica.Entidades.Jugador;
-import Logica.Entidades.PremioCuarentena;
 import Logica.Entidades.PremioPermanente;
 import Logica.Entidades.PremioTemporal;
 
 public class VisitorPremioCuarentena implements Visitor{
 
-	PremioCuarentena miEntidad;
-	public VisitorPremioCuarentena(PremioCuarentena miEntidad) {
+	PremioTemporal miEntidad;
+	public VisitorPremioCuarentena(PremioTemporal miEntidad) {
 		this.miEntidad = miEntidad;
 	}
 	@Override

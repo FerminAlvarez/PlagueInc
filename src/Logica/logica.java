@@ -124,8 +124,8 @@ public class logica {
 		gui.actualizarGrafica();
 	}
 	
-	public Entidad getPremio() {
-		return nivelActual.getPremio();
+	public Entidad obtenerPremio() {
+		return nivelActual.obtenerPremio();
 	}
 	
 	private void pasarNivel() {
@@ -163,7 +163,7 @@ public class logica {
 		n.inicializar();
 		terminarNivelDelay = 120;
 		paraInvocar = new LinkedList<Entidad>();
-		for(Entidad it : n.getEntidades())
+		for(Entidad it : n.obtenerEntidades())
 			paraInvocar.add(it);
 		Collections.shuffle(paraInvocar);
 		itInvocador = paraInvocar.iterator();
