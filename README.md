@@ -86,3 +86,14 @@ Los premios caen a distintas velocidades. Estos premios pueden ser de dos tipos:
     ● Implementar el ganar/perder.
     ● Implementar todo gráficamente.
 
+
+**Diagrama extendido**
+![Alt text](https://github.com/FerminAlvarez/PlagueInc/blob/master/Diagramas/Extendido.svg)
+<img src="https://github.com/FerminAlvarez/PlagueInc/blob/master/Diagramas/Extendido.svg">
+
+**Diagrama simplificado**
+![Alt text](https://github.com/FerminAlvarez/PlagueInc/blob/master/Diagramas/Simplificado.svg)
+<img src="https://github.com/FerminAlvarez/PlagueInc/blob/master/Diagramas/Simplificado.svg">
+
+
+
