@@ -1,7 +1,7 @@
-## PlagueInc
-***Poryecto realizado para Tecnología de Programación (2020) - Universidad Nacional del Sur***
+## PlagueInc##
+***Proyecto realizado para Tecnología de Programación (2020) - Universidad Nacional del Sur***
 
-###LORE
+### LORE
 Las circunstancias actuales que afectan al mundo han hecho que muchas personas pasen más tiempo en sus casas, y una de las consecuencias que se han observado es una creciente demanda de videojuegos como forma de entretenimiento. 
 A su vez, el éxito reciente de Plague Inc ha hecho que Ndemic Creations decida apostar nuevamente por una temática parecida.
 Sin embargo, en este caso consideran que deben apuntar a acaparar otro mercado, buscando un estilo “vintage” de manera que se pueda apelar a la nostalgia de los consumidores.
@@ -13,48 +13,48 @@ El objetivo principal del juego es sobrevivir, evitando ser contagiado, pero ade
 forma involuntaria.
 
 
-###Mapa
+### Mapa
 El mapa donde se juega es un escenario vertical donde desde la parte superior hacia la inferior se desplazan los personajes infectados y en la parte inferior se ubica el jugador, el cual solo puede desplazarse en forma horizontal.
 Los infectados pueden propagar el virus con un rango de alcance o por un contacto físico directo. Si un infectado pasa la línea inferior de la pantalla, vuelve a aparecer por arriba o (opcionalmente) en su posición original.
 
 
-###Niveles
+### Niveles
 El nivel está definido por el conjunto de infectados. La cantidad de infectados en el nivel es fija para cada nivel, pero esta cantidad es dividida en dos tandas. Una vez que los infectados de la primera tanda son desinfectados, la segunda tanda aparece en escena. 
 La dificultad del juego se incrementa conforme se avanza a través de los niveles.
 
 
-###La resistencia del virus y su letalidad
+### La resistencia del virus y su letalidad
 Si bien todos los infectados son portadores del mismo virus, algunos de ellos tienen algunas cepas más resistentes.
 Existen al menos 2 tipos de infectados:
     ● Los portadores de virus Alpha: son fáciles de desinfectar, pero producen un mayor daño al jugador.
     ● Los portadores de virus Beta: son más difíciles de desinfectar.
 
 
-###Jugador
+### Jugador
 Como se mencionó anteriormente, el jugador se encuentra ubicado en la parte inferior del mapa, y solo se desplaza horizontalmente. Este personaje tiene una determinada cantidad
 de carga viral que comienza en 0% pero que cuando llega a 100% pierde, y a su vez tiene una velocidad que determina qué tan rápido se desplaza. Además, el jugador dispone de un
 arma sanitaria cuyos proyectiles contienen algún tipo de solución capaz de desinfectar a los infectados.
 
 
-###Proyectiles
+### Proyectiles
 Los proyectiles se desplazan verticalmente en dirección contraria a los infectados, con una velocidad definida, y una capacidad de desinfección determinada.
 
 
-###Infectados
+### Infectados
 Cada uno de los infectados tienen una carga viral que inicia en 100% y que cuando llega a 0% pasa a estar desinfectado, haciendo que dicho personaje quede fuera del juego.
 A medida que se desplazan por el mapa, los infectados propagan el virus con un rango de alcance limitado. Esta propagación del virus es a través de partículas desprendidas de los infectados, con una velocidad de desplazamiento, un rango de alcance, y en dirección vertical desde la parte superior a la parte inferior del mapa.
 Así mismo, los infectados se desplazan en una misma dirección vertical desde la parte superior a la parte inferior del mapa y con una velocidad determinada. La excepción a esto
 último son los portadores de virus Alpha que cuando se encuentran con una carga viral inferior al 20% produce efectos muy extraños, haciendo que el infectado duplique su velocidad de desplazamiento.
 
 
-###Premios
+### Premios
 Al ser desinfectados, algunos de los infectados dejarán un premio que “cae” en dirección vertical desde la parte superior a la inferior del mapa. El jugador deberá interceptar el premio antes de que el mismo cruce la línea de la pantalla porque ahí el premio desaparece.
 Los premios caen a distintas velocidades. Estos premios pueden ser de dos tipos:
     ● Efecto temporal: Este tipo de premios otorga efectos temporales al jugador. Uno de los efectos deberá ser una “cuarentena obligatoria” que detenga a todos los infectados por un intervalo de tiempo y una “super arma sanitaria” que otorgue un poder de desinfección multiplicado al arma del jugador por un intervalo de tiempo.
     ● Objetos preciosos: Este tipo de premios le confiere al jugador poderes especiales. Se requiere por lo menos implementar uno de ellos, como puede ser una suerte “poción” que recupere la vida del jugador.
     
 
-###Sprints
+### Sprints
 **Primer Sprint**
     ● Diseño del juego
     ● Diseño UML del juego contemplando todos los aspectos generales del sistema y la incorporación de patrones de diseño: jugador, infectados y premios.
