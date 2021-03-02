@@ -1,4 +1,4 @@
-## PlagueInc##
+## PlagueInc
 ***Proyecto realizado para Tecnología de Programación (2020) - Universidad Nacional del Sur***
 
 ### LORE
