@@ -26,8 +26,8 @@ La dificultad del juego se incrementa conforme se avanza a través de los nivele
 ### La resistencia del virus y su letalidad
 Si bien todos los infectados son portadores del mismo virus, algunos de ellos tienen algunas cepas más resistentes.
 Existen al menos 2 tipos de infectados:
-    ● Los portadores de virus Alpha: son fáciles de desinfectar, pero producen un mayor daño al jugador.
-    ● Los portadores de virus Beta: son más difíciles de desinfectar.
+    * Los portadores de virus Alpha: son fáciles de desinfectar, pero producen un mayor daño al jugador.
+    * Los portadores de virus Beta: son más difíciles de desinfectar.
 
 
 ### Jugador
