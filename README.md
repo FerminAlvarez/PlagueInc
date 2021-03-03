@@ -52,41 +52,38 @@ Así mismo, los infectados se desplazan en una misma dirección vertical desde l
 ### Premios
 Al ser desinfectados, algunos de los infectados dejarán un premio que “cae” en dirección vertical desde la parte superior a la inferior del mapa. El jugador deberá interceptar el premio antes de que el mismo cruce la línea de la pantalla porque ahí el premio desaparece.
 Los premios caen a distintas velocidades. Estos premios pueden ser de dos tipos:
-    * Efecto temporal: Este tipo de premios otorga efectos temporales al jugador. Uno de los efectos deberá ser una “cuarentena obligatoria” que detenga a todos los infectados por un intervalo de tiempo y una “super arma sanitaria” que otorgue un poder de desinfección multiplicado al arma del jugador por un intervalo de tiempo.
-    * Objetos preciosos: Este tipo de premios le confiere al jugador poderes especiales. Se requiere por lo menos implementar uno de ellos, como puede ser una suerte “poción” que recupere la vida del jugador.
+* Efecto temporal: Este tipo de premios otorga efectos temporales al jugador. Uno de los efectos deberá ser una “cuarentena obligatoria” que detenga a todos los infectados por un intervalo de tiempo y una “super arma sanitaria” que otorgue un poder de desinfección multiplicado al arma del jugador por un intervalo de tiempo.
+* Objetos preciosos: Este tipo de premios le confiere al jugador poderes especiales. Se requiere por lo menos implementar uno de ellos, como puede ser una suerte “poción” que recupere la vida del jugador.
     
 
 ### Sprints
 **Primer Sprint**
-    * Diseño del juego
-    * Diseño UML del juego contemplando todos los aspectos generales del sistema y la incorporación de patrones de diseño: jugador, infectados y premios.
-    * Diseñar en pseudocódigo (general) la generación del mapa.
-    * Diseñar el movimiento del jugador e infectados (pseudocódigo).
-    * Tener pensado como interactuar entre el jugador, los infectados y el mapa.
-    * Tener funcionando el GitHub con los archivos generados.
+* Diseño del juego
+* Diseño UML del juego contemplando todos los aspectos generales del sistema y la incorporación de patrones de diseño: jugador, infectados y premios.
+* Diseñar en pseudocódigo (general) la generación del mapa.
+* Diseñar el movimiento del jugador e infectados (pseudocódigo).
+* Tener pensado como interactuar entre el jugador, los infectados y el mapa.
+* Tener funcionando el GitHub con los archivos generados.
+
 **Segundo Sprint**
-    * Implementar gráficamente el mapa (sin colisiones).
-    * Implementar el jugador de manera básica.
-    * Implementar gráficamente el jugador (sin colisiones).
-    * Implementar un infectado básico.
-    * Implementar gráficamente un infectado (sin colisiones ni movimiento).
-    * Diseñar las partículas que propagan el virus/proyectiles del arma sanitaria.
-    * Implementar las partículas que propagan el virus/proyectiles del arma sanitaria (sin
-    interacción).
-    * Incorporar detección de colisiones al juego (implementar).
-    * Diseñar la interacción entre jugador/infectados y las partículas que propagan el
-    virus/proyectiles del arma sanitaria.
-    * Diseñar la interacción entre el jugador y los premios.
+* Implementar el jugador de manera básica.
+* Implementar gráficamente el jugador (sin colisiones).
+* Implementar un infectado básico.
+* Implementar gráficamente un infectado (sin colisiones ni movimiento).
+* Diseñar las partículas que propagan el virus/proyectiles del arma sanitaria.
+* Implementar las partículas que propagan el virus/proyectiles del arma sanitaria (sin interacción).
+* Incorporar detección de colisiones al juego (implementar).
+* Diseñar la interacción entre jugador/infectados y las partículas que propagan el virus/proyectiles del arma sanitaria.
+* Diseñar la interacción entre el jugador y los premios.
+
 **Tercer Sprint**
-    * Implementar las partículas que propagan el virus/proyectiles del arma sanitaria con
-    interacción y gráficamente.
-    * Implementar la interacción entre jugador/infectados y las partículas que propagan el
-    virus/proyectiles del arma sanitaria.
-    *Implementar la interacción entre el jugador y los premios.
-    * Implementar todos los infectados.
-    * Implementar todos los premios.
-    * Implementar el ganar/perder.
-    * Implementar todo gráficamente.
+* Implementar las partículas que propagan el virus/proyectiles del arma sanitaria con interacción y gráficamente.
+* Implementar la interacción entre jugador/infectados y las partículas que propagan el virus/proyectiles del arma sanitaria.
+* Implementar la interacción entre el jugador y los premios.
+* Implementar todos los infectados.
+* Implementar todos los premios.
+* Implementar el ganar/perder.
+* Implementar todo gráficamente.
 
 
 **Diagrama extendido**
